@@ -14,6 +14,9 @@ MU:IN TOKYO 투자·영업 제안 데모와도 섞지 않는다.
 - 손님 앱: https://brownrigoon-commits.github.io/clubos-preview/?v=8
 - UI Lab: https://brownrigoon-commits.github.io/clubos-preview/dev/ui/?v=8
 - 운영자 CMS 검수판: https://brownrigoon-commits.github.io/clubos-preview/operator/?v=8
+- 06 MICRO SAND 입장 장면 전용 검토본: https://brownrigoon-commits.github.io/clubos-preview/portal-06/check-in/?v=06
+
+`portal-06/`은 V9 공개 전 형님과 선택 장면만 검토하기 위한 격리된 정적 빌드다. 기존 V8 루트 파일을 교체하지 않는다.
 
 GitHub Pages 캐시 때문에 검토 링크에는 항상 `?v=8`처럼 회차 번호를 붙인다.
 
