@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Bangkok signal</title>
+  <desc id="desc">Red, black and ivory CLUB OS event artwork</desc>
+  <defs>
+    <radialGradient id="g" cx="72%" cy="12%" r="88%">
+      <stop offset="0" stop-color="#ff3148"/>
+      <stop offset=".38" stop-color="#7d0a1c"/>
+      <stop offset="1" stop-color="#050505"/>
+    </radialGradient>
+    <pattern id="scan" width="12" height="12" patternUnits="userSpaceOnUse">
+      <path d="M0 11.5h12" stroke="#fff" stroke-opacity=".12"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="1200" fill="url(#g)"/>
+  <rect width="900" height="1200" fill="url(#scan)"/>
+  <path d="M-70 875 700 50M130 1210 900 385" stroke="#f5ead9" stroke-width="3" opacity=".7"/>
+  <circle cx="700" cy="260" r="210" fill="none" stroke="#f5ead9" stroke-width="2" opacity=".34"/>
+  <circle cx="700" cy="260" r="145" fill="none" stroke="#f5ead9" stroke-width="18" stroke-dasharray="3 19" opacity=".7"/>
+  <text x="62" y="90" fill="#f5ead9" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="7">CLUB:OS / 24H</text>
+  <text x="58" y="820" fill="#f5ead9" font-family="Arial Black, Arial, sans-serif" font-size="118" font-weight="900" letter-spacing="-7">FREQUENCIES</text>
+  <text x="62" y="875" fill="#f5ead9" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="9">BANGKOK AFTER DARK</text>
+  <text x="62" y="1115" fill="#f5ead9" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="5">MU:IN BANGKOK · MAIN ROOM · 22:00</text>
+</svg>
