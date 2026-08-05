@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#050505" />
+  <title>CLUB:OS V11 — Product Index</title>
+  <style>
+    :root{color-scheme:dark;--bg:#050505;--paper:#0b0b0b;--ink:#f7f7f2;--muted:#969696;--line:rgba(255,255,255,.16);--red:#ff315f;--blue:#3cbfff}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+    body{min-height:100dvh;overflow-x:hidden;background:radial-gradient(circle at 18% 12%,rgba(255,49,95,.13),transparent 28%),radial-gradient(circle at 82% 88%,rgba(60,191,255,.12),transparent 32%),#050505}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(to bottom,#000,transparent 82%)}
+    a{color:inherit;text-decoration:none}button{font:inherit}.shell{position:relative;width:min(100%,1120px);margin:auto;padding:max(24px,env(safe-area-inset-top)) 20px max(36px,env(safe-area-inset-bottom))}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-family:"Arial Narrow",Arial,sans-serif;font-size:14px;font-weight:900;letter-spacing:-.04em}.version{border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:10px;font-weight:800;letter-spacing:.18em}
+    .hero{padding:clamp(54px,10vw,112px) 0 42px}.eyebrow{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.22em}.eyebrow:before{content:"";width:34px;height:1px;background:var(--red);box-shadow:0 0 14px var(--red)}
+    h1{max-width:900px;margin:20px 0 14px;font-family:"Arial Narrow",Impact,sans-serif;font-size:clamp(48px,10vw,118px);line-height:.82;letter-spacing:-.075em;text-transform:uppercase}.split{display:block;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.7)}
+    .lead{max-width:620px;margin:0;color:#b8b8b8;font-size:14px;line-height:1.7}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .copy{min-height:48px;border:1px solid rgba(255,255,255,.45);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;padding:0 18px;font-size:11px;font-weight:900;letter-spacing:.12em;cursor:pointer;backdrop-filter:blur(16px)}.copy:active{transform:scale(.97)}.copy.ok{background:#fff;color:#050505}
+    .route{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{position:relative;min-height:250px;padding:22px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));overflow:hidden;transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.42)}.card:active{transform:scale(.985)}
+    .card:after{content:"";position:absolute;width:170px;height:170px;right:-70px;bottom:-80px;border-radius:50%;background:var(--glow);filter:blur(50px);opacity:.22}.n{font-size:10px;color:var(--muted);letter-spacing:.18em}.card h2{position:relative;z-index:1;margin:52px 0 8px;font-family:"Arial Narrow",Impact,sans-serif;font-size:clamp(32px,5vw,54px);line-height:.9;letter-spacing:-.055em}.card p{position:relative;z-index:1;max-width:390px;margin:0;color:#aaa;font-size:12px;line-height:1.55}.go{position:absolute;z-index:2;right:20px;top:18px;width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;font-size:20px}.tag{position:absolute;z-index:2;left:22px;bottom:20px;font-size:9px;font-weight:900;letter-spacing:.16em;color:#d5d5d5}.customer{--glow:var(--red)}.entry{--glow:#fff}.staff{--glow:var(--blue)}.manager{--glow:#b472ff}
+    .foot{display:flex;justify-content:space-between;gap:24px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:#777;font-size:10px;line-height:1.5}.secure{max-width:520px}.status{white-space:nowrap;color:#aaa}
+    @media(max-width:700px){.shell{padding-left:14px;padding-right:14px}.route{grid-template-columns:1fr}.card{min-height:205px}.card h2{margin-top:38px}.foot{flex-direction:column}.status{white-space:normal}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top"><div class="brand">CLUB:OS / NUBREED</div><div class="version">PRODUCT V11</div></header>
+    <section class="hero">
+      <div class="eyebrow">ONE NIGHT · FOUR SURFACES</div>
+      <h1>ENTER THE<br><span class="split">WHOLE SYSTEM.</span></h1>
+      <p class="lead">고객의 입장과 IN-CLUB 세계부터 현장 STAFF 실행, CLUB MANAGER 관제까지 지금까지 완성된 제품 화면을 한 곳에서 확인합니다.</p>
+      <div class="actions"><button class="copy" id="copyLink" type="button">V11 링크 복사</button></div>
+    </section>
+    <section class="route" aria-label="CLUB:OS 제품 화면 선택">
+      <a class="card customer" href="/clubos-preview/?v=11"><span class="n">01 / PUBLIC APP</span><span class="go">↗</span><h2>CUSTOMER<br>WORLD</h2><p>TONIGHT · ARTISTS · STORY · DJ MUSIC · BLACK/WHITE · 다국어</p><span class="tag">OPEN CUSTOMER APP</span></a>
+      <a class="card entry" href="/clubos-preview/check-in/?v=11"><span class="n">02 / QR + DUST</span><span class="go">↗</span><h2>IN-CLUB<br>WORLD</h2><p>QR 승인 · MICRO SAND · PULSE · MATCH · ORDER · SERVICE · ME</p><span class="tag">ENTER THE NIGHT</span></a>
+      <a class="card staff" href="/clubos-preview/operator/operations/staff/?v=11"><span class="n">03 / CLUB OPERATOR</span><span class="go">↗</span><h2>STAFF<br>MODE</h2><p>NOW · ORDER QUEUE · SOS · SCHEDULE · 담당 구역 · 교대 인계</p><span class="tag">REVIEW DATA</span></a>
+      <a class="card manager" href="/clubos-preview/operator/operations/manager/?v=11"><span class="n">04 / CONTROL TOWER</span><span class="go">↗</span><h2>CLUB<br>MANAGER</h2><p>LIVE FLOOR · TEAM · VVIP · REVENUE · 결제 · POS · MD · 정산 관제</p><span class="tag">REVIEW DATA</span></a>
+    </section>
+    <footer class="foot"><div class="secure">PLATFORM HQ는 클럽 관계자·고객 앱에 노출하지 않는 보안 원칙에 따라 이 공개 제품 인덱스에서 제외했습니다.</div><div class="status">V11 · GUEST + OPERATOR CONNECTED</div></footer>
+  </main>
+  <script>
+    const button=document.getElementById('copyLink');
+    const canonical=location.origin+'/clubos-preview/product/?v=11';
+    button.addEventListener('click',async()=>{
+      try{await navigator.clipboard.writeText(canonical)}catch(_){const t=document.createElement('textarea');t.value=canonical;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}
+      button.textContent='복사 완료';button.classList.add('ok');setTimeout(()=>{button.textContent='V11 링크 복사';button.classList.remove('ok')},1800);
+    });
+  </script>
+</body>
+</html>
