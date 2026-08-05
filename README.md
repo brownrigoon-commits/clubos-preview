@@ -4,6 +4,7 @@
 
 - Product index (Guest + IN-CLUB + Staff + Manager): https://brownrigoon-commits.github.io/clubos-preview/product/?v=11
 - Platform HQ is intentionally excluded from the public product index.
+- V11 hotfix: REVIEW re-entry recovery and persistent mobile B/W + language controls for Staff/Manager.
 
 이 저장소는 CLUB:OS **실제 제품 앱의 검토용 정적 산출물만** 공개한다.
 제품 소스와 설계 문서는 별도 저장소 `brownrigoon-commits/clubos`에서 관리하며,
