@@ -4,23 +4,33 @@
 제품 소스와 설계 문서는 별도 저장소 `brownrigoon-commits/clubos`에서 관리하며,
 MU:IN TOKYO 투자·영업 제안 데모와도 섞지 않는다.
 
-- 현재 검토 빌드: **V8**
-- 제품 기준: V8 — 12px 렌즈 블러·14% 프로스트 색막·짧은 커서·클릭 반응·도시별 포인터 광원
+- 현재 손님 앱 검토 빌드: **V10**
+- 제품 기준: V10 — 기존 TONIGHT·ARTISTS·STORY·DJ MUSIC에 QR 입장과 고객용 IN-CLUB 01~08 통합
 - 제품 소스: `brownrigoon-commits/clubos`
 - 정적 빌드 기준: `PAGES_BASE=/clubos-preview`
 
 ## 공개 주소
 
-- 손님 앱: https://brownrigoon-commits.github.io/clubos-preview/?v=8
-- UI Lab: https://brownrigoon-commits.github.io/clubos-preview/dev/ui/?v=8
+- 손님 앱: https://brownrigoon-commits.github.io/clubos-preview/?v=10
+- QR 입장: https://brownrigoon-commits.github.io/clubos-preview/check-in/?v=10
+- UI Lab: https://brownrigoon-commits.github.io/clubos-preview/dev/ui/?v=10
 - 운영자 CMS 검수판: https://brownrigoon-commits.github.io/clubos-preview/operator/?v=8
-- 06 MICRO SAND 입장 장면 전용 검토본: https://brownrigoon-commits.github.io/clubos-preview/portal-06/check-in/?v=06
+- 이전 06 MICRO SAND 격리 검토본: https://brownrigoon-commits.github.io/clubos-preview/portal-06/check-in/?v=9-da5aa16
 
-`portal-06/`은 V9 공개 전 형님과 선택 장면만 검토하기 위한 격리된 정적 빌드다. 기존 V8 루트 파일을 교체하지 않는다.
+`portal-06/`은 선택 장면의 이전 상태를 비교하기 위한 격리 자산으로 보존한다. 현재 전체 손님 앱은 루트 V10이다.
 
-GitHub Pages 캐시 때문에 검토 링크에는 항상 `?v=8`처럼 회차 번호를 붙인다.
+GitHub Pages 캐시 때문에 검토 링크에는 항상 `?v=10`처럼 회차 번호를 붙인다.
 
-## V8 범위
+## V10 범위
+
+- 메인 TONIGHT의 `IN CLUB ACCESS` 카드에서 `/check-in`으로 직접 연결
+- QR 승인 → 06 MICRO SAND DUST IN → 게임형 PULSE·MATCH 세계 진입
+- MATCH 발견·상호 연결·채팅·공개 만남 장소·블라인드 평가·NIGHT CREDIT
+- ORDER 옵션·장바구니·결제 검토·테이블 배달/바 픽업 상태
+- SERVICE 일반 호출·SOS·SLA·완료/재요청
+- ME · NIGHT ID · MANNER · 활동 기록
+- 클럽별 다층·다구역 고객 동선 지도
+- FULL/LITE/STATIC 기기 성능 안전 모드와 DUST OUT 일반 앱 자동 복귀
 
 - 클럽·도시·DJ·이벤트 STORY와 정확한 24시간 만료 규칙
 - STORY에서 예약·팔로우·이벤트·DJ MUSIC으로 이동
