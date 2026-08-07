@@ -202,6 +202,46 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
 
 
 
+
+/* 그리드 실사진 셀 */
+.gph{position:absolute;inset:0;background-size:cover;background-position:center top;filter:saturate(.92) brightness(.9)}
+.gveil{position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(180deg,transparent,rgba(5,3,9,.88))}
+/* 찾아가기 레이더 */
+.findtop{display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-shrink:0}
+.fph{width:42px;height:56px;border-radius:8px;background-size:cover;background-position:center top;flex-shrink:0;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.finfo{min-width:0}
+.finfo b{display:block;font-size:10.5px;font-weight:700;letter-spacing:-.02em}
+.finfo span{font-family:var(--mono);font-size:7.5px;letter-spacing:.08em;color:var(--dim2)}
+.radar{position:relative;flex:1;min-height:0;display:grid;place-items:center;overflow:hidden;border-radius:14px;
+  background:radial-gradient(90% 90% at 50% 50%,rgba(255,122,26,.05),transparent 70%)}
+.rwrap{position:relative;width:216px;height:216px;border-radius:50%;overflow:hidden}
+.rsweep{position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(rgba(255,177,78,.20) 0 22deg,transparent 22deg);animation:rspin 3.2s linear infinite}
+.rbeam{position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 15deg,rgba(255,122,26,.16) 0 60deg,transparent 60deg)}
+.rring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;
+  border:1px dashed rgba(255,177,78,.25)}
+.rring.hot{border:2px solid var(--spark);
+  box-shadow:0 0 16px rgba(255,122,26,.55),inset 0 0 16px rgba(255,122,26,.3);animation:rpulse 1.5s ease-in-out infinite}
+.rme{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#ffd9a0,#ff7a1a 60%);box-shadow:0 0 10px rgba(255,122,26,.9)}
+.rlab{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:var(--mono);font-size:8.5px;
+  letter-spacing:.1em;color:var(--beam)}
+.rlab b{color:var(--spark);font-size:12px;letter-spacing:0}
+@keyframes rspin{to{transform:rotate(360deg)}}
+@keyframes rpulse{50%{box-shadow:0 0 28px rgba(255,122,26,.85),inset 0 0 22px rgba(255,122,26,.45)}}
+/* 매치 도면 픽커 */
+.mplan{flex:1;min-height:0;display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:5px;margin-top:10px}
+.mz{position:relative;border:1px solid var(--line2);border-radius:8px;background:rgba(255,255,255,.02);
+  font-family:var(--mono);font-size:6.8px;letter-spacing:.08em;color:var(--dim2);padding:5px}
+.mz .mp{position:absolute;right:6px;bottom:4px;font-size:9px;color:var(--beam)}
+.mz.me{border-color:rgba(53,232,255,.4)}
+.mz.me::after{content:'◉ 나';position:absolute;left:6px;bottom:4px;font-size:7.5px;color:#35E8FF}
+.mz.sel{border-color:var(--spark);background:rgba(255,122,26,.09);box-shadow:0 0 14px rgba(255,122,26,.3)}
+.mz.sel .mp{color:var(--spark)}
+.mz .near{position:absolute;left:6px;bottom:4px;font-size:7px;color:var(--spark)}
+
 /* 존 체류 이력 다이어그램 */
 .trail{display:flex;align-items:stretch;gap:6px;margin:12px 0 4px;flex-wrap:wrap}
 .tstep{flex:1;min-width:120px;border:1px solid var(--line2);border-left:2px solid var(--dim2);
@@ -256,7 +296,7 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
   </div>
   <h1>EM<br><em>BER</em></h1>
   <p class="hero-ko">3,000명 속에서, <b>그 한 사람.</b></p>
-  <p class="hero-p">룩북 스파크 9화면은 정교했지만 <b style="color:var(--paper)">클럽 안에서 읽을 수 있는 분량이 아니었습니다</b>. EMBER는 화면을 9개에서 4개로 줄이되, 좁히는 일은 <b style="color:var(--paper)">사람이 아니라 시스템이</b> 합니다. 주말 만석 <b style="color:var(--paper)">3,000명</b>을 기준으로 다시 계산했고, 그 숫자가 두 가지를 바꿨습니다 — <u>색은 두 개로</u>, <u>결과는 그리드로</u>.</p>
+  <p class="hero-p">룩북 스파크 9화면은 정교했지만 <b style="color:var(--paper)">클럽 안에서 읽을 수 있는 분량이 아니었습니다</b>. EMBER는 화면을 9개에서 5개로 줄이되, 좁히는 일은 <b style="color:var(--paper)">사람이 아니라 시스템이</b> 합니다. 주말 만석 <b style="color:var(--paper)">3,000명</b>을 기준으로 다시 계산했고, 그 숫자가 두 가지를 바꿨습니다 — <u>색은 두 개로</u>, <u>결과는 그리드로</u>.</p>
 
   <div class="funnel f5">
     <div class="fn"><span class="fn-n">3,000</span><span class="fn-l">Peak venue</span><span class="fn-k">주말 만석</span></div>
@@ -267,13 +307,14 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
   </div>
 
   <nav class="index">
-    <h3>Sheet index — 규모 + 4 screens + 대조표</h3>
+    <h3>Sheet index — 규모 + 5 screens + 대조표</h3>
     <ol>
       <li><a href="#s0"><i>00</i> 3,000명에서 작동하는가</a></li>
       <li><a href="#s1"><i>01</i> 입장 — 오늘의 룩 한 장</a></li>
       <li><a href="#s2"><i>02</i> 그리드 — 이 앱의 전부</a></li>
-      <li><a href="#s3"><i>03</i> 내 카드 — 나를 켠다(플레어)</a></li>
-      <li><a href="#s4"><i>04</i> 매치 — 그리고 만남</a></li>
+      <li><a href="#s2b"><i>03</i> 찾아가기 — 레이더로 다가간다</a></li>
+      <li><a href="#s3"><i>04</i> 내 카드 — 나를 켠다(플레어)</a></li>
+      <li><a href="#s4"><i>05</i> 매치 — 그리고 만남</a></li>
       <li><a href="#sd"><i>◆</i> 9화면 → 4화면 대조표</a></li>
       <li><a href="#sm"><i>◆</i> 기존 인클럽 메뉴 처리</a></li>
     </ol>
@@ -409,15 +450,15 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
           <span class="chip">＋9</span>
         </div>
         <div class="grid3">
-          <div class="gcell inb"><span class="gdot"></span><b>방금</b></div>
-          <div class="gcell g2"><b>2분</b></div>
-          <div class="gcell g3"><b>4분</b></div>
-          <div class="gcell g4"><b>5분</b></div>
-          <div class="gcell g5 holding"><span class="gring"></span><b>HOLD</b></div>
-          <div class="gcell g6"><b>7분</b></div>
-          <div class="gcell g2"><b>8분</b></div>
-          <div class="gcell g3"><b>9분</b></div>
-          <div class="gcell g4"><b>10분</b></div>
+          <div class="gcell inb"><span class="gph" style="background-image:url(city/muin-bangkok/03.jpg)"></span><span class="gveil"></span><span class="gdot"></span><b>방금</b></div>
+          <div class="gcell"><span class="gph" style="background-image:url(city/muin-bali/02.jpg)"></span><span class="gveil"></span><b>2분</b></div>
+          <div class="gcell"><span class="gph" style="background-image:url(city/muin-bangkok/05.jpg)"></span><span class="gveil"></span><b>4분</b></div>
+          <div class="gcell"><span class="gph" style="background-image:url(city/muin-kl/02.jpg)"></span><span class="gveil"></span><b>5분</b></div>
+          <div class="gcell holding"><span class="gph" style="background-image:url(city/muin-bangkok/07.jpg)"></span><span class="gveil"></span><span class="gring"></span><b>HOLD</b></div>
+          <div class="gcell"><span class="gph" style="background-image:url(city/muin-bali/04.jpg)"></span><span class="gveil"></span><b>7분</b></div>
+          <div class="gcell"><span class="gph" style="background-image:url(city/muin-bangkok/09.jpg)"></span><span class="gveil"></span><b>8분</b></div>
+          <div class="gcell"><span class="gph" style="background-image:url(city/muin-kl/04.jpg)"></span><span class="gveil"></span><b>9분</b></div>
+          <div class="gcell"><span class="gph" style="background-image:url(city/muin-bali/07.jpg)"></span><span class="gveil"></span><b>10분</b></div>
         </div>
       </div>
       <div class="tabbar">
@@ -436,7 +477,7 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
         <span class="tech">SORT: seenMinsAgo ASC → RSSI DESC</span></div></li>
       <li><span class="num">04</span><div><h4>한 장씩 넘기지 않는다 — 3,000명이 만든 두 번째 변경</h4>
         <p>39명을 카드 덱으로 보면 39번 스와이프입니다. <b>3열 그리드는 한 화면에 12명</b>, 세 번 스크롤이면 끝납니다. 찾는 행위에는 그리드가, 결정하는 행위에는 큰 카드가 맞습니다 — 그래서 <u>탭하면 그 자리에서 크게 열립니다.</u></p>
-        <span class="tech">3-COL GRID · MAX 40 · NO INFINITE SCROLL</span></div></li>
+        <span class="tech">3-COL GRID · MAX 40 · NO INFINITE SCROLL</span><br><span class="tech" style="margin-top:4px">시트의 사진은 지점 공식 인스타 컷(임시) — 실서비스는 입장 시 등록한 전신 룩</span></div></li>
       <li><span class="num">05</span><div><h4>홀드 하나가 보내기·수락·플레어 전부</h4>
         <p>그리드 칸을 1.2초 꾹 = 스파크(화면 전환 없음). 받은 카드를 꾹 = 수락. 내 카드를 꾹 = 플레어. <b>대상만 다르고 동작은 같습니다.</b> 중간에 떼면 링이 되감기며 아무 일도 없어, 취한 손가락이 3발을 흘릴 방법이 없습니다.</p>
         <span class="tech">HOLD_MS 1200 · RELEASE = REWIND 400ms</span></div></li>
@@ -450,11 +491,64 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
   </div>
 </section>
 
-<!-- ===== 03 ===== -->
+<!-- ===== 03 찾아가기 ===== -->
+<section class="sheet" id="s2b">
+  <div class="count">DISTANCE<b>8m</b></div>
+  <div class="shead">
+    <div class="snum">03</div>
+    <div class="stitle"><h2>찾아가기 — 레이더로 다가간다</h2><span class="skicker">Find · 그리드 카드를 탭하면 열린다 · 눈으로 확인하고 쏜다</span></div>
+  </div>
+  <p class="slead">그리드에서 마음에 드는 룩을 탭하면 <b>레이더가 열립니다.</b> 내가 중심이고, 상대는 <u>그 거리의 링</u>으로 빛납니다. 걸으면 링이 안쪽으로 들어오고 — 가까워질수록 뜨거워집니다. 15m 안에서 상대의 룩을 <b>눈으로 대조</b>하고, 맞으면 그 자리에서 1.2초 꾹.</p>
+  <div class="sbody">
+    <div class="devwrap"><div class="dev"><div class="scr">
+      <div class="bar"><b>23:58</b><span>5G ▮▮▮</span></div>
+      <div class="pad">
+        <div class="findtop">
+          <span class="fph" style="background-image:url(city/muin-bali/03.jpg)"></span>
+          <span class="finfo"><b>BLACK × DENIM</b><span>MAIN FLOOR · 3분 전 목격</span></span>
+        </div>
+        <div class="radar">
+          <div class="rwrap">
+            <span class="rbeam"></span>
+            <span class="rsweep"></span>
+            <span class="rring" style="width:206px;height:206px"></span>
+            <span class="rring hot" style="width:128px;height:128px"></span>
+            <span class="rring" style="width:56px;height:56px"></span>
+            <span class="rme"></span>
+          </div>
+          <div class="rlab"><b>약 8m</b> · 가까워지는 중 · 부채꼴 = 대략 방향</div>
+        </div>
+      </div>
+      <div class="scr-foot">
+        <div class="btn">저 사람이다 — 1.2초 꾹</div>
+        <div class="note">상대가 쉴드를 켜면 이 화면은 열리지 않습니다</div>
+      </div>
+    </div></div></div>
+    <ol class="co">
+      <li><span class="num">01</span><div><h4>점은 찍지 않는다 — 링이 빛난다</h4>
+        <p>비콘 신호는 <b>거리는 재지만 방향은 모릅니다.</b> 그래서 상대를 점으로 찍는 대신 <u>그 거리의 링 전체</u>가 빛납니다. 가짜 점을 찍으면 그 방향으로 걸어간 손님이 배신당합니다 — 재미는 정직 위에서만 성립합니다.</p>
+        <span class="tech">RSSI DISTANCE ONLY · RING, NOT DOT</span></div></li>
+      <li><span class="num">02</span><div><h4>뜨겁다 / 차갑다 — 걷는 것이 게임이 된다</h4>
+        <p>내가 움직이면 링이 안팎으로 이동합니다. 가까워지면 링이 붉어지고 진동이 촘촘해지고, 멀어지면 식습니다. <b>보물찾기의 문법</b>이라 설명이 필요 없습니다.</p>
+        <span class="tech">HOT/COLD · HAPTIC TICK ∝ 1/DISTANCE</span></div></li>
+      <li><span class="num">03</span><div><h4>비콘을 촘촘히 깔면 부채꼴까지</h4>
+        <p>존당 비콘 1개면 거리만, <b>3개 이상이면 삼각측량으로 대략의 방향(60° 부채꼴)</b>까지 좁혀집니다. 점 단위 정밀 추적(UWB·15cm급)은 <u>의도적으로 쓰지 않습니다</u> — 그 순간 이 화면은 게임이 아니라 추적 도구가 됩니다. 지점별 설비 결정 사항으로 남깁니다.</p>
+        <span class="tech">1 BEACON = RING · 3+ = 60° SECTOR · UWB 금지</span></div></li>
+      <li><span class="num">04</span><div><h4>마지막 확인은 언제나 눈</h4>
+        <p>상단에 상대의 룩이 고정돼 있습니다. 레이더는 15m 안까지만 데려다주고, <b>"저 사람이다"는 내 눈이 판정</b>합니다. 그래서 이 앱의 이름이 룩북입니다 — 확인했으면 화면 그대로 홀드.</p>
+        <span class="tech">LOOK PINNED TOP · CONFIRM BY EYE · HOLD IN PLACE</span></div></li>
+      <li><span class="num">05</span><div><h4>따라가기를 막는 네 겹</h4>
+        <p>① 같은 존에 있을 때만 열립니다 ② 상대가 쉴드를 켜면 화면 자체가 안 열립니다 ③ 방향은 부채꼴이 상한 — 점 표시는 어떤 설비에서도 금지 ④ 새벽 5시 전부 소멸. <b>찾기는 쉽게, 따라붙기는 불가능하게.</b></p>
+        <span class="tech">SAME ZONE ONLY · SHIELD KILLS RADAR · 05:00 WIPE</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 04 ===== -->
 <section class="sheet" id="s3">
   <div class="count">REACH<b>2,050</b></div>
   <div class="shead">
-    <div class="snum">03</div>
+    <div class="snum">04</div>
     <div class="stitle"><h2>내 카드 — 나를 켠다</h2><span class="skicker">Flare · 그리드를 아래로 당기면 나온다 · 하룻밤 1회</span></div>
   </div>
   <p class="slead">그리드를 아래로 당기면 <b>내 룩 카드</b>가 나옵니다. 그 카드를 꾹 누르면 플레어 — <u>내가 남을 찾는 게 아니라, 남이 나를 찾게 하는 것</u>입니다. 만석에서는 내 존+인접 존만 해도 <b>2,050명</b>에게 닿습니다.</p>
@@ -491,11 +585,11 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
   </div>
 </section>
 
-<!-- ===== 04 ===== -->
+<!-- ===== 05 ===== -->
 <section class="sheet" id="s4">
   <div class="count">MATCH<b>1</b></div>
   <div class="shead">
-    <div class="snum">04</div>
+    <div class="snum">05</div>
     <div class="stitle"><h2>매치 — 그리고 만남</h2><span class="skicker">Match open · 채팅은 여기 안에 산다</span></div>
   </div>
   <p class="slead">두 카드가 부딪혀 하나가 되는 순간이 매치입니다. 화면을 새로 열지 않고 <b>그리드 위에서 그대로 일어납니다.</b> 그리고 첫 제안은 대화가 아니라 <u>밝고 직원이 보이는 자리에서 만나기</u>입니다 — 3,000명 속에서 서로를 찾는 마지막 문제를 시스템이 풉니다.</p>
@@ -503,21 +597,29 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
     <div class="devwrap"><div class="dev"><div class="scr">
       <div class="bar"><b>00:31</b><span>5G ▮▮▮</span></div>
       <div class="pad">
-        <div class="matchwrap"><div>
-          <div class="pair"><i style="background:#7b5cff"></i><i style="background:#ff2e7e"></i></div>
-          <h4>SPARK!</h4>
-          <p>연락처·실명은 오가지 않습니다<br>쉴드 한 번이면 조용히 사라집니다</p>
+        <div class="matchwrap" style="flex:0 0 auto;padding:10px 0 2px"><div>
+          <div class="pair" style="margin-bottom:8px"><i style="width:26px;height:26px;background:#7b5cff"></i><i style="width:26px;height:26px;background:#ff2e7e"></i></div>
+          <h4 style="font-size:26px">SPARK!</h4>
+          <p style="margin-top:3px">어디서 만날까요 — 가까운 포인트를 골라 두었어요</p>
         </div></div>
+        <div class="mplan">
+          <div class="mz">STAGE FRONT</div>
+          <div class="mz">DJ BOOTH</div>
+          <div class="mz me" style="grid-row:span 2">MAIN FLOOR</div>
+          <div class="mz sel">BAR A<span class="mp">◉ S-01</span><span class="near">가까움 · 24m</span></div>
+          <div class="mz">BAR B<span class="mp">◉ F-02</span></div>
+          <div class="mz">LOUNGE<span class="mp">◉ L-03</span></div>
+        </div>
       </div>
       <div class="scr-foot">
-        <div class="btn">시그널바에서 만나기</div>
+        <div class="btn">S-01 시그널 바에서 만나기 · 24m</div>
         <div class="btn ghost" style="margin-top:7px">채팅</div>
-        <div class="note">미팅 포인트는 밝고 스태프가 있는 곳만</div>
+        <div class="note">◉ = 밝고 스태프가 있는 포인트만 · 도면은 지점별로 교체</div>
       </div>
     </div></div></div>
     <ol class="co">
-      <li><span class="num">01</span><div><h4>만석일수록 미팅 포인트가 중요하다</h4>
-        <p>3,000명 안에서 "어디서 볼까"를 문자로 정하는 건 불가능에 가깝습니다. <b>시스템이 두 사람의 존 사이 최단 지점</b>을, 그것도 밝고 스태프가 있는 곳만 골라 제시합니다. 어색함 제거이자 안전 설계입니다.</p>
+      <li><span class="num">01</span><div><h4>처음 온 사람도 도면을 보면 안다</h4>
+        <p>"시그널 바"라는 이름만으로는 초행자가 못 찾습니다. 그래서 버튼 대신 <b>클럽 도면 위에 포인트를 찍어</b> 보여줍니다 — 내 위치(◉ 나)와 가장 가까운 포인트가 미리 골라져 있고, 다른 곳을 탭해도 됩니다. 도면은 도시 지점마다 실제 도면으로 교체됩니다(제품 소유자 제공 예정). 후보는 밝고 스태프가 있는 곳만.</p>
         <span class="tech">STAFFED / LIT ZONES ONLY · SHORTEST HOP</span></div></li>
       <li><span class="num">02</span><div><h4>만남이 채팅보다 위에 있다</h4>
         <p>버튼 순서가 곧 제품의 주장입니다. 이 앱은 온라인 대화를 늘리려고 만든 게 아니라 <b>같은 공간에 있는 두 사람을 실제로 만나게 하려고</b> 만들었습니다.</p>
@@ -583,8 +685,8 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
     <table class="dtable">
       <thead><tr><th style="width:20%">기존 탭</th><th style="width:14%">처리</th><th>이유</th></tr></thead>
       <tbody>
-        <tr><td>PULSE (레이더)</td><td><span class="pill cut">삭제</span></td>
-          <td>12개 고정 노드 레이더는 <b>그리드가 하는 일과 같습니다</b> — 누가 근처에 있나. 게다가 3,000명을 레이더 점으로 그리는 건 불가능합니다. 유용했던 지표(존 인원·혼잡도)는 그리드 상단 한 줄로 흡수.</td></tr>
+        <tr><td>PULSE (레이더)</td><td><span class="pill merge">03으로 부활</span></td>
+          <td>전체를 훑는 레이더(3,000명을 점으로)는 불가능해 삭제하되, <b>레이더라는 형식은 03 찾아가기로 부활</b>했습니다 — 전원이 아니라 <u>내가 고른 한 사람</u>만, 점이 아니라 거리 링으로. 존 인원·혼잡도 지표는 그리드 상단 한 줄로 흡수.</td></tr>
         <tr><td>MATCH (여정 6단계)</td><td><span class="pill merge">그리드로</span></td>
           <td>DISCOVER→LIKE→MATCH→CHAT→MEET→RATE 레일과 3단계 활성화 설정은 <b>클럽 안에서 읽기엔 너무 깁니다</b>. 활성화 설정은 <b>MY(홈)</b>로 이미 옮겼고, 나머지는 그리드+매치가 대신합니다.<br><span class="mono">⚠️ realtime/gateway.ts(745줄)·supabase-transport(590줄)는 완성돼 있으나 UI 미배선 — 3,000명 실시간의 열쇠가 여기 있습니다</span></td></tr>
         <tr><td>ORDER (주문)</td><td><span class="pill keep">유지</span></td>
@@ -628,7 +730,7 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
   </div>
   <div class="sig">
     <span>CLUB OS · IN CLUB · EMBER</span>
-    <span>SPEC SHEET v2.0 — 4 SCREENS / 4 TABS / PEAK 3,000</span>
+    <span>SPEC SHEET v2.1 — 5 SCREENS / 4 TABS / PEAK 3,000</span>
   </div>
 </section>
 
