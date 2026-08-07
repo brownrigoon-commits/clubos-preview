@@ -407,9 +407,9 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
 
   <div class="funnel f5">
     <div class="fn"><span class="fn-n">3,000</span><span class="fn-l">Peak venue</span><span class="fn-k">주말 만석</span></div>
-    <div class="fn"><span class="fn-n">1,350</span><span class="fn-l">Auto zone</span><span class="fn-k">비콘이 자동으로</span></div>
-    <div class="fn"><span class="fn-n">173</span><span class="fn-l">2 colors</span><span class="fn-k">상의+하의 칩</span></div>
-    <div class="fn"><span class="fn-n">39</span><span class="fn-l">Near · recent</span><span class="fn-k">15m · 10분</span></div>
+    <div class="fn"><span class="fn-n">225</span><span class="fn-l">Tap the map</span><span class="fn-k">도면에서 봤던 자리</span></div>
+    <div class="fn"><span class="fn-n">29</span><span class="fn-l">2 colors</span><span class="fn-k">상의+하의 칩</span></div>
+    <div class="fn"><span class="fn-n">16</span><span class="fn-l">Recent</span><span class="fn-k">최근 10분</span></div>
     <div class="fn"><span class="fn-n">1</span><span class="fn-l">Match</span><span class="fn-k">상호 확인</span></div>
   </div>
 
@@ -420,7 +420,7 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
       <li><a href="#s1"><i>01</i> 입장 — 오늘의 룩 한 장</a></li>
       <li><a href="#s2"><i>02</i> 그리드 — 이 앱의 전부</a></li>
       <li><a href="#s2b"><i>03</i> 찾아가기 — 레이더로 다가간다</a></li>
-      <li><a href="#s3"><i>04</i> 내 카드 — 나를 켠다(플레어)</a></li>
+      <li><a href="#s3"><i>04</i> 플레어 — 나를 켠다</a></li>
       <li><a href="#s4"><i>05</i> 매치 — 그리고 만남</a></li>
       <li><a href="#s6"><i>06</i> 플레어를 켠 뒤 — 3분</a></li>
       <li><a href="#s7"><i>07</i> 매치된 뒤 — 만나기까지</a></li>
@@ -443,43 +443,50 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
       <thead><tr><th style="width:22%">단계</th><th style="width:15%">최악(메인플로어)</th><th style="width:15%">보통(바 A)</th><th>어떤 장치가 자르나</th></tr></thead>
       <tbody>
         <tr><td>입장 전체</td><td>3,000</td><td>3,000</td><td>주말 피크 만석. 평일은 1,500~2,000</td></tr>
-        <tr><td>① 존 자동</td><td>1,350</td><td>300</td><td>BLE 비콘. <b>사용자 조작 0</b> — 화면도 0</td></tr>
-        <tr><td>② 상의 색</td><td>432</td><td>96</td><td>칩 한 번. 검정이 32%라 이것만으론 부족</td></tr>
-        <tr><td>③ 하의 색</td><td><b>173</b></td><td><b>38</b></td><td><span class="pill new">신규</span> 구 스펙엔 없던 <b>두 번째 색</b>. 여기서 처음 쓸 만해진다</td></tr>
-        <tr><td>④ 근접 15m</td><td>78</td><td>17</td><td>RSSI 세기. 자동 정렬이라 조작 0</td></tr>
-        <tr><td>⑤ 최근 10분</td><td><b>39</b></td><td><b>9</b></td><td>목격 시각 정렬. 자동</td></tr>
-      </tbody>
+        <tr><td>① 도면 탭</td><td><b>225</b></td><td>300</td><td><span class="pill new">수정</span> 도면에서 <b>"여기서 봤어요"</b>를 한 번 탭. 메인플로어를 6구역으로 나누면 1,350 → 225</td></tr>
+        <tr><td>② 상의 색</td><td>72</td><td>96</td><td>칩 한 번. 검정이 32%</td></tr>
+        <tr><td>③ 하의 색</td><td><b>29</b></td><td><b>38</b></td><td>구 스펙엔 없던 <b>두 번째 색</b></td></tr>
+        <tr><td>④ 최근 10분</td><td><b>16</b></td><td><b>21</b></td><td>목격 시각 정렬. 자동</td></tr></tbody>
     </table>
   </div>
+  <div class="callout">
+    <b>⚠️ 정정 — 초안의 "근접 15m 자동 필터"는 물리적으로 불가능했습니다</b>
+    <p>비콘 신호로 알 수 있는 건 <b>나와 비콘 사이의 거리</b>이지 <b>나와 다른 사람 사이의 거리</b>가 아닙니다. 사람 간 거리를 구하려면 실내 정밀 측위를 해야 하는데, 그건 이 스펙이 스스로 금지한 것(추적 도구가 됩니다)이고 iOS는 백그라운드에서 폰끼리 신호를 주고받는 것도 막습니다.<br>
+    그래서 <b>그 필터를 뺐습니다.</b> 그냥 빼면 후보가 95명(3열 32행)이 되어 "세 번 스크롤이면 끝"이 무너집니다. 대신 <u>구 스펙의 존 맵을 되살려</u> — 도면에서 <b>"여기서 봤어요"를 한 번 탭</b>하게 했습니다. 탭 한 번이 늘지만 <b>후보는 16명</b>(3열 5행)으로 오히려 더 좁혀지고, <u>비콘 하드웨어가 전혀 필요 없습니다.</u></p>
+  </div>
   <div class="callout" style="border-color:rgba(255,177,78,.4);background:rgba(255,177,78,.07)">
-    <b style="color:var(--beam)">이 숫자가 강제하는 두 가지 설계 변경</b>
-    <p>① <b>색은 반드시 두 개여야 한다.</b> 한 개(구 스펙)로는 메인플로어에서 432명이 남습니다. 상의·하의 두 칩을 받으면 173명 — 네 배 가까이 날카로워집니다.<br>
-    ② <b>결과는 그리드로 봐야 한다.</b> 39명을 카드 한 장씩 넘기면 39번 스와이프입니다. 3열 그리드면 <u>한 화면에 12명, 세 번 스크롤이면 끝</u>입니다. 앞선 초안의 "카드 한 장 덱"은 300명 규모의 답이었고, <b style="color:var(--paper)">3,000명에서는 폐기합니다.</b></p>
+    <b style="color:var(--beam)">이 숫자가 강제하는 설계</b>
+    <p>① <b>색은 두 개여야 합니다.</b> 한 개로는 검정 상의 72명이 남습니다.<br>
+    ② <b>결과는 그리드로 봐야 합니다.</b> 16명이면 한 화면에 12명, 한 번만 스크롤하면 끝입니다.<br>
+    ③ <b>위치는 사람이 찍고, 시스템은 시각만 기록합니다.</b> 하드웨어 없이 성립하는 유일한 구조입니다.</p>
   </div>
   <div class="sbody" style="margin-top:8px">
     <ol class="co" style="grid-column:1/-1">
-      <li><span class="num">01</span><div><h4>30초 주기가 아니라 <u>움직일 때만</u> — 그게 더 빠르고 더 가볍다</h4>
-        <p>초안의 "30초에 한 번 보고"는 <b>틀린 설계였습니다.</b> 사람이 존을 옮겨도 최대 30초간 옛 자리로 보입니다. 대신 <b>존이 바뀌는 순간에만 보고</b>합니다 — iOS·안드로이드 모두 비콘 구역 진입/이탈을 <u>OS가 백그라운드에서 콜백</u>으로 알려줍니다(약 2~10초). 가만히 있으면 통신은 0건이고, 3,000명이 밤새 20번씩 옮겨도 <b>평균 초당 3.3건</b>입니다.</p>
-        <span class="tech">iBEACON REGION ENTER/EXIT · 2~10s · 3.3 req/s (폴링 대비 30배 ↓)</span></div></li>
+      <li><span class="num">01</span><div><h4>위치는 <u>사람이 찍는다</u> — 비콘은 V1에서 뺀다</h4>
+        <p>초안은 BLE 비콘이 존을 자동 감지한다고 썼습니다. 확인해 보니 <b>비콘은 이 프로젝트의 어느 확정 문서에도 없었습니다</b> — 스펙·ADR·DB 어디에도요. 확정된 위치 모델은 <b>QR/NFC 앵커</b>입니다.<br>
+        게다가 비콘은 <u>클럽 벽에 하드웨어를 붙이고, 만석에서 전파를 다시 재고, 배터리를 갈고, 죽으면 그 구역이 조용히 0명이 되는</u> 일을 떠안습니다. V1에서는 뺍니다.<br>
+        대신 <b>입장 QR 1회</b>로 지금 존을 잡고, 찾을 때는 <b>도면에서 봤던 자리를 탭</b>합니다. 탭 한 번이 늘고, 하드웨어 원가는 0이 됩니다.</p>
+        <span class="tech">QR/NFC ANCHOR (ADR-004) · NO BEACON HARDWARE IN V1</span></div></li>
       <li><span class="num">02</span><div><h4>지금 어디 있나가 아니라, <u>내가 봤을 때 어디 있었나</u></h4>
-        <p>이게 진짜 답입니다. 사람이 계속 움직이니 <b>현재 위치만 저장하면 검색이 깨집니다</b> — 23:40에 바에서 본 사람이 23:45에 플로어로 갔다면, 23:47에 "바에서 봤어요"로 찾을 때 사라져 버립니다. 그래서 현재 존이 아니라 <b>존 체류 이력</b>을 남깁니다. 검색은 "지금 거기 있는 사람"이 아니라 <b>"그 시간에 거기 있었던 사람"</b>을 찾습니다.</p>
+        <p>사람이 계속 움직이니 <b>현재 위치만 저장하면 검색이 깨집니다</b> — 23:40에 바에서 본 사람이 23:45에 플로어로 갔다면, 23:47에 "바에서 봤어요"로 찾을 때 사라져 버립니다. 그래서 <b>존 체류 이력</b>을 남기고, 검색은 <b>"그 시간에 거기 있었던 사람"</b>을 찾습니다.</p>
         <div class="trail">
-          <div class="tstep"><b>23:40</b><span>BAR A 진입</span></div>
+          <div class="tstep"><b>23:40</b><span>BAR A 앵커 QR 탭</span></div>
           <div class="tarrow">→</div>
-          <div class="tstep"><b>23:45</b><span>MAIN FLOOR로 이동</span></div>
+          <div class="tstep"><b>23:45</b><span>MAIN FLOOR 앵커로 이동</span></div>
           <div class="tarrow">→</div>
-          <div class="tstep now"><b>23:47</b><span>내가 검색 · <em>BAR A · 7분 전</em>으로 찾힘</span></div>
+          <div class="tstep now"><b>23:47</b><span>내가 도면에서 BAR A 탭 · <em>7분 전</em>으로 찾힘</span></div>
         </div>
-        <span class="tech">ZONE TRAIL (zone, enteredAt, leftAt) · 1인당 밤새 ~20행</span></div></li>
+        <span class="tech">ZONE TRAIL (anchor, enteredAt, leftAt) · 1인당 밤새 ~20행</span></div></li>
       <li><span class="num">03</span><div><h4>스파크는 진짜 실시간이다 — 그리고 이미 만들어져 있다</h4>
         <p>위치는 몇 초 늦어도 되지만 <b>스파크 도착은 즉시여야 합니다.</b> 이건 폴링이 아니라 상시 연결(WebSocket)이고, 매치 도메인에 <b>게이트웨이 745줄 + 트랜스포트 590줄</b>이 presence·시퀀스 갭·백필·오프라인 큐·멱등 ack까지 완성된 채 있습니다. <u>화면에 연결만 안 돼 있을 뿐입니다.</u></p>
         <span class="tech">SUPABASE REALTIME · gateway.ts · 미배선 자산</span></div></li>
       <li><span class="num">04</span><div><h4>사진 3,000장을 내려받지 않는다</h4>
         <p>화면이 요청하는 건 <b>필터를 통과한 39장</b>뿐입니다. 썸네일 20KB 기준 800KB — 클럽 와이파이에서 1초입니다. 전체 목록은 서버가 갖고 클라이언트는 결과만 받습니다.</p>
         <span class="tech">SERVER-SIDE FILTER · PAGE 24 · THUMB 20KB</span></div></li>
-      <li><span class="num">05</span><div><h4>근접도는 앱을 열었을 때만 잰다</h4>
-        <p>존 진입/이탈은 백그라운드에서도 잡히지만, <b>15m 근접도(신호 세기)는 앱이 켜져 있을 때만</b> 정확히 측정됩니다. 상관없습니다 — <u>찾을 때 앱을 열기 때문</u>입니다. 열자마자 1~2초간 재고 그리드를 정렬합니다. 배터리를 밤새 태우지 않는 이유이기도 합니다.</p>
-        <span class="tech">RANGING ON FOREGROUND ONLY · 1~2s SETTLE</span></div></li>
+      <li><span class="num">05</span><div><h4>측정하지 않는 것 — 사람 사이의 거리</h4>
+        <p>이 앱은 <b>사람과 사람 사이의 거리를 재지 않습니다.</b> 잴 수도 없고(위 정정), 잴 수 있어도 안 잽니다 — 그 순간 추적 도구가 되니까요.<br>
+        아는 것은 <u>"그 사람이 몇 시에 어느 구역에 있었다"</u>뿐이고, 그것만으로 16명까지 좁혀집니다. 나머지는 눈이 합니다.</p>
+        <span class="tech">NO PERSON-TO-PERSON RANGING · ANCHOR + TIME ONLY</span></div></li>
       <li><span class="num">06</span><div><h4>붐빌수록 오히려 정확해진다</h4>
         <p>사람이 많으면 후보도 늘지만, <b>같은 존에 오래 머무는 사람의 비율도 늘어납니다</b>. 근접·시간 필터의 신호 대 잡음비는 한산할 때보다 만석일 때 좋습니다. 위험한 건 인원이 아니라 <u>색 편중</u>이고, 그건 두 번째 색으로 해결했습니다.</p>
         <span class="tech">DENSITY HELPS RECENCY SIGNAL</span></div></li>
@@ -693,14 +700,14 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
   <div class="count">REACH<b>2,050</b></div>
   <div class="shead">
     <div class="snum">04</div>
-    <div class="stitle"><h2>내 카드 — 나를 켠다</h2><span class="skicker">Flare · 그리드를 아래로 당기면 나온다 · 하룻밤 1회</span></div>
+    <div class="stitle"><h2>플레어 — 나를 켠다</h2><span class="skicker">Flare · 상단 ◆ 를 탭하면 열린다 · 하룻밤 1회</span></div>
   </div>
-  <p class="slead">그리드를 아래로 당기면 <b>내 룩 카드</b>가 나옵니다. 그 카드를 꾹 누르면 플레어 — <u>내가 남을 찾는 게 아니라, 남이 나를 찾게 하는 것</u>입니다. 만석에서는 내 존+인접 존만 해도 <b>2,050명</b>에게 닿습니다.</p>
+  <p class="slead">상단의 <b>금색 ◆</b> — 남은 플레어를 늘 보여주던 그 표시 — 를 탭하면 <b>내 카드</b>가 열립니다. 그 카드를 꾹 누르면 플레어. <u>내가 남을 찾는 게 아니라, 남이 나를 찾게 하는 것</u>이고, 만석에서는 내 존+인접 존만 해도 <b>2,050명</b>에게 닿습니다.</p>
   <div class="sbody">
     <div class="devwrap"><div class="dev"><div class="scr">
       <div class="bar"><b>00:14</b><span>5G ▮▮▮</span></div>
       <div class="pad">
-        <div class="ammo"><i></i><i class="ash"></i><i class="ash"></i><em></em><span>내 카드 · 당겨서 열림</span></div>
+        <div class="ammo"><i></i><i class="ash"></i><i class="ash"></i><em style="box-shadow:0 0 15px rgba(245,182,13,1);outline:2px solid rgba(245,182,13,.6);outline-offset:3px"></em><span>◆ 를 눌러서 열림</span></div>
         <div class="lookcard c" style="flex:1">
           <div class="grain"></div><div class="veil"></div>
           <span class="tag">MY LOOK · 켜면 2,050명에게 보입니다</span>
@@ -716,13 +723,17 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
       </div>
     </div></div></div>
     <ol class="co">
-      <li><span class="num">01</span><div><h4>콜드 스타트를 살리는 유일한 장치</h4>
+      <li><span class="num">01</span><div><h4>숨긴 제스처가 아니라 <u>늘 보이던 ◆</u> 에 넣는다</h4>
+        <p>처음엔 "그리드를 아래로 당기면 내 카드"였습니다. <b>그건 아는 사람만 쓰는 기능입니다</b> — 하룻밤 한 번뿐인 카드를 숨은 제스처 뒤에 두면 대부분은 존재조차 모른 채 밤이 끝납니다.<br>
+        금색 ◆ 는 이미 <u>모든 화면 상단에서 남은 플레어를 보여주고</u> 있었습니다. 그걸 그대로 <b>입구</b>로 씁니다 — 보이는 것을 누르면 그것이 열린다는, 설명이 필요 없는 규칙입니다.</p>
+        <span class="tech">TAP ◆ IN STATUS BAR · NO HIDDEN GESTURE</span></div></li>
+      <li><span class="num">02</span><div><h4>콜드 스타트를 살리는 유일한 장치</h4>
         <p>입장 직후엔 아무도 본 사람이 없고, 스파크 3발을 다 쓰면 할 게 없어집니다. 플레어가 없으면 <b>그 두 순간에 앱이 죽습니다.</b> 구 07을 화면 없이 남긴 이유입니다.</p>
         <span class="tech">1 PER NIGHT · 180s · MY ZONE + ADJACENT</span></div></li>
-      <li><span class="num">02</span><div><h4>만석에서는 상한이 필요하다</h4>
+      <li><span class="num">03</span><div><h4>만석에서는 상한이 필요하다</h4>
         <p>2,050명에게 열면 스파크가 감당 못 할 만큼 들어올 수 있습니다. <b>들어온 스파크는 상위 12개까지만 보여주고</b> 나머지는 자동 만료·반환합니다. 고르는 피로가 매칭을 망치지 않게 하는 안전판입니다.</p>
         <span class="tech">INBOUND CAP 12 · REST AUTO-EXPIRE + REFUND</span></div></li>
-      <li><span class="num">03</span><div><h4>기분은 고르는 것, 쓰는 것이 아니다</h4>
+      <li><span class="num">04</span><div><h4>기분은 고르는 것, 쓰는 것이 아니다</h4>
         <p>자유 입력이 없습니다. 프리셋 3개 중 하나만 고릅니다. 타이핑은 매치 이후에만 등장한다는 원칙을 지키면서, <u>어두운 곳에서 3초 안에 끝납니다.</u></p>
         <span class="tech">PRESET MOODS ONLY · NO FREE TEXT</span></div></li>
     </ol>
@@ -899,7 +910,7 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
       <tr><td>앱을 껐을 때</td><td class="haptic">첫 건만</td><td>잠금화면 알림은 <b>최대 2번</b> — 첫 도착, 종료. 알림에 룩·인원은 담지 않습니다. 다시 열면 바로 고르기로 갑니다.</td></tr>
       <tr><td>존을 옮기면</td><td class="haptic">없음</td><td>대상은 <b>발사 시점에 확정</b>됩니다. 걸어다니는 것만으로 브로드캐스트가 번지면 그건 스팸입니다.</td></tr>
       <tr><td>상대가 쉴드를 켜면</td><td class="haptic">없음</td><td>그 카드만 회색 "만료". 카운터는 줄지 않고 빈자리를 다시 열지도 않습니다 — 12/12의 의미가 흔들리지 않게.</td></tr>
-      <tr><td>내가 끄면</td><td class="haptic">없음</td><td>내 카드를 반대로 1.2초 홀드. <b>반환 없음</b> — 켰다 껐다로 브로드캐스트를 반복할 수 없어야 합니다.</td></tr>
+      <tr><td>내가 끄면</td><td class="haptic">없음</td><td>◆ 를 다시 눌러 내 카드를 열고 반대로 1.2초 홀드. <b>반환 없음</b> — 켰다 껐다로 브로드캐스트를 반복할 수 없어야 합니다.</td></tr>
     </tbody>
   </table>
 </section>
