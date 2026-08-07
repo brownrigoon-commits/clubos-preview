@@ -203,6 +203,27 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
 
 
 
+
+/* 임의 클럽 도면 (SVG) */
+.fplan{flex:1;min-height:0;margin-top:8px;border-radius:12px;overflow:hidden;
+  background:rgba(255,255,255,.015);border:1px solid var(--line2)}
+.fplan svg{width:100%;height:100%;display:block}
+.fp-zone{fill:rgba(237,231,245,.035);stroke:rgba(237,231,245,.16);stroke-width:1}
+.fp-vip{fill:rgba(245,182,13,.10);stroke:rgba(245,182,13,.4);stroke-width:1;stroke-dasharray:3 2}
+.fp-amber{fill:rgba(255,122,26,.10);stroke:rgba(255,122,26,.4);stroke-width:1}
+.fp-floor{fill:rgba(53,232,255,.03);stroke:rgba(53,232,255,.22);stroke-dasharray:3 3;stroke-width:1}
+.fp-wall{fill:none;stroke:rgba(237,231,245,.3);stroke-width:1.6}
+.fp-lab{font-family:var(--mono);font-size:6.4px;letter-spacing:.09em;fill:#5C5175}
+.fp-lab.lit{fill:#FFB14E}
+.fp-lab.me{fill:#35E8FF}
+.fp-route{fill:none;stroke:#FF7A1A;stroke-width:1.4;stroke-dasharray:4 3;opacity:.85}
+.fp-pin{fill:#0C0718;stroke:#FFB14E;stroke-width:1.4}
+.fp-pin.sel{fill:#FF7A1A;stroke:#FFD9A0;filter:drop-shadow(0 0 5px rgba(255,122,26,.95))}
+.fp-medot{fill:#35E8FF;filter:drop-shadow(0 0 4px rgba(53,232,255,.9))}
+.fpulse{fill:none;stroke:#35E8FF;stroke-width:1;transform-box:fill-box;transform-origin:center;
+  animation:fppulse 1.9s ease-out infinite}
+@keyframes fppulse{0%{transform:scale(.45);opacity:.9}100%{transform:scale(2.1);opacity:0}}
+
 /* 그리드 실사진 셀 */
 .gph{position:absolute;inset:0;background-size:cover;background-position:center top;filter:saturate(.92) brightness(.9)}
 .gveil{position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(180deg,transparent,rgba(5,3,9,.88))}
@@ -600,21 +621,63 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
         <div class="matchwrap" style="flex:0 0 auto;padding:10px 0 2px"><div>
           <div class="pair" style="margin-bottom:8px"><i style="width:26px;height:26px;background:#7b5cff"></i><i style="width:26px;height:26px;background:#ff2e7e"></i></div>
           <h4 style="font-size:26px">SPARK!</h4>
-          <p style="margin-top:3px">어디서 만날까요 — 가까운 포인트를 골라 두었어요</p>
+          <p style="margin-top:3px">어디서 만날까요 — 도면의 ◉ 포인트를 탭하세요 (가까운 곳이 미리 선택됨)</p>
         </div></div>
-        <div class="mplan">
-          <div class="mz">STAGE FRONT</div>
-          <div class="mz">DJ BOOTH</div>
-          <div class="mz me" style="grid-row:span 2">MAIN FLOOR</div>
-          <div class="mz sel">BAR A<span class="mp">◉ S-01</span><span class="near">가까움 · 24m</span></div>
-          <div class="mz">BAR B<span class="mp">◉ F-02</span></div>
-          <div class="mz">LOUNGE<span class="mp">◉ L-03</span></div>
-        </div>
+        <div class="fplan"><svg viewBox="0 0 322 212" preserveAspectRatio="xMidYMid meet" aria-label="SEL OCTAGON TOKYO 도면(트레이스)">
+          <!-- ── 외곽 실루엣: 좌상단 사선 VIP 윙 + 중앙 홀 + 우측 블록 ── -->
+          <path class="fp-wall" d="M20 66 L86 14 L158 38 L204 46 L204 22 H258 V46 H282 V52 H306 V158 H282 V170 H206 L200 158 H92 L112 104 L44 104 Z"/>
+          <!-- 구역표시 · VIP 윙(좌상단, 사선) -->
+          <polygon class="fp-vip" points="26,66 86,20 152,42 114,100 48,100"/>
+          <text class="fp-lab lit" x="62" y="58">♛ VIP AREA</text>
+          <rect class="fp-zone" x="30" y="70" width="16" height="10" rx="2" transform="rotate(-38 38 75)"/>
+          <rect class="fp-zone" x="52" y="52" width="16" height="10" rx="2" transform="rotate(-38 60 57)"/>
+          <rect class="fp-zone" x="74" y="36" width="16" height="10" rx="2" transform="rotate(-38 82 41)"/>
+          <rect class="fp-zone" x="96" y="46" width="16" height="10" rx="2" transform="rotate(-38 104 51)"/>
+          <rect class="fp-zone" x="112" y="60" width="16" height="10" rx="2" transform="rotate(-38 120 65)"/>
+          <circle class="fp-pin" cx="118" cy="88" r="4.4"/>
+          <text class="fp-lab lit" x="94" y="94">◉ L-03</text>
+          <!-- 구역표시 · 메인 플로어(중앙) -->
+          <polygon class="fp-floor" points="116,102 154,44 198,52 198,154 96,154"/>
+          <text class="fp-lab me" x="138" y="96">MAIN FLOOR</text>
+          <!-- DJ BOOTH -->
+          <rect class="fp-zone" x="120" y="138" width="42" height="15" rx="3"/>
+          <text class="fp-lab" x="124" y="148">DJ BOOTH</text>
+          <!-- FLOOR BAR (선택된 미팅 포인트 S-01) -->
+          <polygon class="fp-amber" points="166,154 200,146 206,166 176,172"/>
+          <text class="fp-lab lit" x="168" y="166">FLOOR BAR</text>
+          <circle class="fp-pin sel" cx="196" cy="158" r="5.2"/>
+          <text class="fp-lab lit" x="204" y="178">S-01 · 18m</text>
+          <!-- 우측 블록: VIP ENTRANCE · EV · KITCHEN · BAR · VIP -->
+          <rect class="fp-zone" x="206" y="24" width="22" height="20" rx="2"/><text class="fp-lab" x="211" y="37">EV</text>
+          <rect class="fp-zone" x="232" y="24" width="22" height="20" rx="2"/><text class="fp-lab" x="237" y="37">EV</text>
+          <rect class="fp-zone" x="206" y="48" width="72" height="24" rx="3"/>
+          <text class="fp-lab" x="212" y="63">VIP ENTRANCE</text>
+          <rect class="fp-zone" x="212" y="80" width="64" height="26" rx="3"/>
+          <text class="fp-lab" x="224" y="96">KITCHEN</text>
+          <path class="fp-amber" d="M222 110 A20 20 0 0 0 262 110 Z"/>
+          <text class="fp-lab lit" x="232" y="122">▼ BAR</text>
+          <circle class="fp-pin" cx="242" cy="112" r="4.4"/>
+          <text class="fp-lab lit" x="250" y="132">◉ F-02</text>
+          <polygon class="fp-vip" points="206,132 240,132 240,156 206,150"/>
+          <text class="fp-lab lit" x="208" y="145">♛ VIP</text>
+          <!-- 우측 끝: 화장실 -->
+          <rect class="fp-zone" x="284" y="56" width="20" height="46" rx="2"/>
+          <text class="fp-lab" x="287" y="76" transform="rotate(90 287 76)">LADIES</text>
+          <rect class="fp-zone" x="284" y="106" width="20" height="46" rx="2"/>
+          <text class="fp-lab" x="287" y="124" transform="rotate(90 287 124)">MENS</text>
+          <!-- 내 위치 + 경로 -->
+          <circle class="fpulse" cx="150" cy="120" r="7"/>
+          <circle class="fp-medot" cx="150" cy="120" r="3.6"/>
+          <text class="fp-lab me" x="141" y="134">나</text>
+          <path class="fp-route" d="M155 123 Q176 132 192 152"/>
+          <!-- 입구 표기 -->
+          <text class="fp-lab" x="126" y="206">▲ ENTRANCE</text>
+        </svg></div>
       </div>
       <div class="scr-foot">
-        <div class="btn">S-01 시그널 바에서 만나기 · 24m</div>
+        <div class="btn">S-01 플로어 바에서 만나기 · 18m</div>
         <div class="btn ghost" style="margin-top:7px">채팅</div>
-        <div class="note">◉ = 밝고 스태프가 있는 포인트만 · 도면은 지점별로 교체</div>
+        <div class="note">◉ = 밝고 스태프가 있는 포인트만 · 도면 = SEL OCTAGON TOKYO 트레이스(임시)<br>실제 도면 이미지를 주시면 배경으로 그대로 교체됩니다</div>
       </div>
     </div></div></div>
     <ol class="co">
