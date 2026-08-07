@@ -238,7 +238,7 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
   background:radial-gradient(90% 90% at 50% 50%,rgba(255,122,26,.05),transparent 70%)}
 .rwrap{position:relative;width:216px;height:216px;border-radius:50%;overflow:hidden}
 .rsweep{position:absolute;inset:0;border-radius:50%;
-  background:conic-gradient(rgba(255,177,78,.20) 0 22deg,transparent 22deg);animation:rspin 3.2s linear infinite}
+  background:conic-gradient(rgba(255,177,78,.10) 0 16deg,transparent 16deg);animation:rspin 4.2s linear infinite}
 .rbeam{position:absolute;inset:0;border-radius:50%;
   background:conic-gradient(from 15deg,rgba(255,122,26,.16) 0 60deg,transparent 60deg)}
 .rring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;
@@ -263,6 +263,22 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
 .mz.sel .mp{color:var(--spark)}
 .mz .near{position:absolute;left:6px;bottom:4px;font-size:7px;color:var(--spark)}
 
+
+
+/* 레이더 — 룩 카드가 곧 블립 */
+.rface{position:absolute;transform:translate(-50%,-50%);width:52px;height:69px;border-radius:8px;
+  overflow:hidden;background-size:cover;background-position:center top;
+  box-shadow:0 0 0 2px var(--spark),0 0 18px rgba(255,122,26,.85),0 6px 16px rgba(0,0,0,.6);
+  animation:rface 1.8s ease-in-out infinite}
+@keyframes rface{50%{box-shadow:0 0 0 2px var(--spark),0 0 30px rgba(255,122,26,1),0 6px 16px rgba(0,0,0,.6)}}
+.rface b{position:absolute;left:0;right:0;bottom:0;font-family:var(--mono);font-size:6px;letter-spacing:.06em;
+  text-align:center;color:#fff;background:rgba(255,122,26,.85);padding:2px 0;font-weight:400}
+.rarrow{position:absolute;left:50%;top:50%;width:2px;transform-origin:50% 0;
+  background:linear-gradient(180deg,rgba(255,122,26,.9),rgba(255,122,26,0))}
+.rnorth{position:absolute;left:50%;top:5px;transform:translateX(-50%);font-family:var(--mono);
+  font-size:7px;letter-spacing:.12em;color:var(--dim2)}
+.rfacing{position:absolute;left:50%;top:16px;transform:translateX(-50%);width:0;height:0;
+  border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:8px solid rgba(53,232,255,.7)}
 
 /* 촬영 전 확인 팝업 */
 .pop{position:absolute;inset:0;z-index:9;display:flex;align-items:center;justify-content:center;
@@ -555,25 +571,28 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
     <div class="snum">03</div>
     <div class="stitle"><h2>찾아가기 — 레이더로 다가간다</h2><span class="skicker">Find · 그리드 카드를 탭하면 열린다 · 눈으로 확인하고 쏜다</span></div>
   </div>
-  <p class="slead">그리드에서 마음에 드는 룩을 탭하면 <b>레이더가 열립니다.</b> 내가 중심이고, 상대는 <u>그 거리의 링</u>으로 빛납니다. 걸으면 링이 안쪽으로 들어오고 — 가까워질수록 뜨거워집니다. 15m 안에서 상대의 룩을 <b>눈으로 대조</b>하고, 맞으면 그 자리에서 1.2초 꾹.</p>
+  <p class="slead">그리드에서 마음에 드는 룩을 탭하면 <b>레이더가 열립니다.</b> 내가 중심이고, <b>상대의 룩 카드가 그 위치에 떠 있습니다</b> — 거리는 반지름, 방향은 각도. 화면 위쪽이 <u>내가 지금 보는 쪽</u>이라(나침반 연동) 카드가 오른쪽 위에 있으면 고개를 오른쪽으로 돌리면 됩니다. 걸으면 카드가 안쪽으로 들어오고, 15m 안에서 <b>눈으로 대조</b>한 뒤 그 자리에서 1.2초 꾹.</p>
   <div class="sbody">
     <div class="devwrap"><div class="dev"><div class="scr">
       <div class="bar"><b>23:58</b><span>5G ▮▮▮</span></div>
       <div class="pad">
         <div class="findtop">
-          <span class="fph" style="background-image:url(city/muin-bali/03.jpg)"></span>
-          <span class="finfo"><b>BLACK × DENIM</b><span>MAIN FLOOR · 3분 전 목격</span></span>
+          <span class="finfo" style="min-width:0"><b>이 사람을 찾는 중</b><span>MAIN FLOOR · 3분 전 목격 · BLACK × DENIM</span></span>
         </div>
         <div class="radar">
           <div class="rwrap">
-            <span class="rbeam"></span>
+            <span class="rnorth">내가 보는 쪽</span>
+            <span class="rfacing"></span>
+            <span class="rbeam" style="background:conic-gradient(from 2deg,rgba(255,122,26,.22) 0 60deg,transparent 60deg)"></span>
             <span class="rsweep"></span>
             <span class="rring" style="width:206px;height:206px"></span>
             <span class="rring hot" style="width:128px;height:128px"></span>
             <span class="rring" style="width:56px;height:56px"></span>
+            <span class="rarrow" style="height:64px;transform:translateX(-50%) rotate(148deg)"></span>
             <span class="rme"></span>
+            <span class="rface" style="left:65.7%;top:24.9%;background-image:url(looks/look-02.jpg)"><b>8m</b></span>
           </div>
-          <div class="rlab"><b>약 8m</b> · 가까워지는 중 · 부채꼴 = 대략 방향</div>
+          <div class="rlab"><b>약 8m</b> · 오른쪽 앞 · 가까워지는 중</div>
         </div>
       </div>
       <div class="scr-foot">
@@ -582,19 +601,25 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
       </div>
     </div></div></div>
     <ol class="co">
-      <li><span class="num">01</span><div><h4>점은 찍지 않는다 — 링이 빛난다</h4>
-        <p>비콘 신호는 <b>거리는 재지만 방향은 모릅니다.</b> 그래서 상대를 점으로 찍는 대신 <u>그 거리의 링 전체</u>가 빛납니다. 가짜 점을 찍으면 그 방향으로 걸어간 손님이 배신당합니다 — 재미는 정직 위에서만 성립합니다.</p>
-        <span class="tech">RSSI DISTANCE ONLY · RING, NOT DOT</span></div></li>
-      <li><span class="num">02</span><div><h4>뜨겁다 / 차갑다 — 걷는 것이 게임이 된다</h4>
+      <li><span class="num">01</span><div><h4>상대의 룩이 <u>곧 레이더의 점</u>이다</h4>
+        <p>화면 어딘가에 작게 붙여 두는 게 아니라, <b>찾는 사람의 룩 카드가 레이더 위 그 위치에 떠 있습니다.</b> 거리는 중심으로부터의 길이, 방향은 각도 — 그리고 그 자리에 <u>그 사람의 옷이 그대로 보입니다.</u> "저 옷 입은 사람이 저쪽 8m"가 한 장의 그림으로 읽힙니다.<br>
+        고개를 들어 대조할 대상이 화면에 있으니, 눈과 화면을 오갈 필요가 없습니다.</p>
+        <span class="tech">LOOK CARD = BLIP · DISTANCE=RADIUS · DIRECTION=ANGLE</span></div></li>
+      <li><span class="num">02</span><div><h4>방향은 <u>나침반에 맞춰</u> 돈다 — 화면 위쪽이 내가 보는 쪽</h4>
+        <p>지도가 북쪽 고정이면 "동쪽 12시 방향"을 머릿속에서 돌려야 합니다. EMBER는 <b>폰의 나침반에 맞춰 레이더가 회전</b>합니다 — 화면 위쪽이 항상 <u>내가 지금 바라보는 방향</u>입니다. 룩 카드가 오른쪽 위에 있으면 <b>고개를 오른쪽으로 돌리면 됩니다.</b> 생각할 필요가 없습니다.<br>
+        방향 자체는 비콘 3개 이상의 삼각측량에서 나오고, 정확도는 60° 부채꼴이 상한입니다(아래 03).</p>
+        <span class="tech">MAGNETOMETER-ALIGNED · SCREEN-UP = FACING</span></div></li>
+      <li><span class="num">03</span><div><h4>뜨겁다 / 차갑다 — 걷는 것이 게임이 된다</h4>
         <p>내가 움직이면 링이 안팎으로 이동합니다. 가까워지면 링이 붉어지고 진동이 촘촘해지고, 멀어지면 식습니다. <b>보물찾기의 문법</b>이라 설명이 필요 없습니다.</p>
         <span class="tech">HOT/COLD · HAPTIC TICK ∝ 1/DISTANCE</span></div></li>
-      <li><span class="num">03</span><div><h4>비콘을 촘촘히 깔면 부채꼴까지</h4>
-        <p>존당 비콘 1개면 거리만, <b>3개 이상이면 삼각측량으로 대략의 방향(60° 부채꼴)</b>까지 좁혀집니다. 점 단위 정밀 추적(UWB·15cm급)은 <u>의도적으로 쓰지 않습니다</u> — 그 순간 이 화면은 게임이 아니라 추적 도구가 됩니다. 지점별 설비 결정 사항으로 남깁니다.</p>
-        <span class="tech">1 BEACON = RING · 3+ = 60° SECTOR · UWB 금지</span></div></li>
-      <li><span class="num">04</span><div><h4>마지막 확인은 언제나 눈</h4>
-        <p>상단에 상대의 룩이 고정돼 있습니다. 레이더는 15m 안까지만 데려다주고, <b>"저 사람이다"는 내 눈이 판정</b>합니다. 그래서 이 앱의 이름이 룩북입니다 — 확인했으면 화면 그대로 홀드.</p>
-        <span class="tech">LOOK PINNED TOP · CONFIRM BY EYE · HOLD IN PLACE</span></div></li>
-      <li><span class="num">05</span><div><h4>따라가기를 막는 네 겹</h4>
+      <li><span class="num">04</span><div><h4>방향을 아는 척하지 않는다 — 부채꼴이 상한</h4>
+        <p>비콘 1개면 <b>거리만</b> 알 수 있어 링만 빛나고 룩 카드는 링 위에 떠 있되 방향은 표시하지 않습니다. <b>3개 이상이면 삼각측량으로 60° 부채꼴</b>까지 좁혀지고, 그때 룩 카드가 그 부채꼴 안에 놓입니다.<br>
+        부채꼴을 화살표 하나로 좁혀 그리지 않는 이유: <u>실제 오차보다 정확한 척하면 그 방향으로 걸어간 손님이 배신당합니다.</u> 점 단위 추적(UWB·15cm급)은 의도적으로 쓰지 않습니다 — 그 순간 이 화면은 게임이 아니라 추적 도구가 됩니다.</p>
+        <span class="tech">1 BEACON = RING ONLY · 3+ = 60° SECTOR · UWB 금지</span></div></li>
+      <li><span class="num">05</span><div><h4>마지막 확인은 언제나 눈</h4>
+        <p>레이더는 15m 안까지만 데려다주고, <b>"저 사람이다"는 내 눈이 판정</b>합니다. 룩 카드를 탭하면 크게 열려 옷을 자세히 대조할 수 있고, 맞으면 그 자리에서 1.2초 홀드 — <u>확인과 발사가 같은 화면에서 끝납니다.</u></p>
+        <span class="tech">TAP BLIP = ENLARGE · CONFIRM BY EYE · HOLD IN PLACE</span></div></li>
+      <li><span class="num">06</span><div><h4>따라가기를 막는 네 겹</h4>
         <p>① 같은 존에 있을 때만 열립니다 ② 상대가 쉴드를 켜면 화면 자체가 안 열립니다 ③ 방향은 부채꼴이 상한 — 점 표시는 어떤 설비에서도 금지 ④ 새벽 5시 전부 소멸. <b>찾기는 쉽게, 따라붙기는 불가능하게.</b></p>
         <span class="tech">SAME ZONE ONLY · SHIELD KILLS RADAR · 05:00 WIPE</span></div></li>
     </ol>
