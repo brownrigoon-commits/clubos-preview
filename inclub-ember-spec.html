@@ -263,6 +263,22 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
 .mz.sel .mp{color:var(--spark)}
 .mz .near{position:absolute;left:6px;bottom:4px;font-size:7px;color:var(--spark)}
 
+
+/* 촬영 전 확인 팝업 */
+.pop{position:absolute;inset:0;z-index:9;display:flex;align-items:center;justify-content:center;
+  background:rgba(4,3,8,.82);backdrop-filter:blur(3px);padding:16px}
+.popbox{width:100%;border-radius:16px;padding:16px 15px 13px;background:#140B22;
+  border:1px solid rgba(255,122,26,.45);box-shadow:0 20px 50px -20px rgba(255,122,26,.6)}
+.popbox .pi{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;margin-bottom:10px;
+  background:rgba(255,122,26,.16);color:var(--spark);font-size:16px}
+.popbox h5{font-size:14px;font-weight:800;letter-spacing:-.03em;line-height:1.35;margin-bottom:7px}
+.popbox h5 em{font-style:normal;color:var(--spark)}
+.popbox p{font-size:10.5px;line-height:1.65;color:var(--dim)}
+.popbox .warn{margin-top:9px;padding:8px 9px;border-radius:8px;background:rgba(255,122,26,.09);
+  border-left:2px solid var(--spark);font-size:9.5px;line-height:1.6;color:#ffcf9e}
+.popbox .pb{margin-top:12px;display:block;text-align:center;padding:10px;border-radius:10px;
+  background:linear-gradient(135deg,#FFD9A0,#FF7A1A);color:#170A02;font-size:11.5px;font-weight:800}
+
 /* 존 체류 이력 다이어그램 */
 .trail{display:flex;align-items:stretch;gap:6px;margin:12px 0 4px;flex-wrap:wrap}
 .tstep{flex:1;min-width:120px;border:1px solid var(--line2);border-left:2px solid var(--dim2);
@@ -406,7 +422,7 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
     <div class="snum">01</div>
     <div class="stitle"><h2>입장 — 오늘의 룩 한 장</h2><span class="skicker">Entry · 입구 QR · 20초 · 유일하게 남긴 등록 단계</span></div>
   </div>
-  <p class="slead">이 화면만은 <b>줄일 수 없었습니다</b>. 룩 카드가 없으면 상대가 나를 알아볼 단서가 사라지고, 색으로 찾는 것도 스파크에 나를 동봉하는 것도 성립하지 않습니다. 3,000명 규모에서는 <u>여기서 뽑는 색 두 개가 유일하게 믿을 수 있는 검색 키</u>입니다.</p>
+  <p class="slead">이 화면만은 <b>줄일 수 없었습니다</b>. 룩 카드가 없으면 상대가 나를 알아볼 단서가 사라지고, 색으로 찾는 것도 스파크에 나를 동봉하는 것도 성립하지 않습니다. 3,000명 규모에서는 <u>여기서 뽑는 색 두 개가 유일하게 믿을 수 있는 검색 키</u>입니다. 그래서 촬영 전에 <b>"클럽에서 입을 그 옷인가"</b>를 반드시 확인받습니다.</p>
   <div class="sbody">
     <div class="devwrap"><div class="dev"><div class="scr">
       <div class="bar"><b>23:38</b><span>5G ▮▮▮</span></div>
@@ -417,6 +433,13 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
           <div class="grain"></div><div class="veil"></div>
           <span class="tag">FULL BODY · AUTO CROP</span>
           <div class="lmeta"><i style="background:#111"></i><i style="background:#2B4C8C"></i><span>상의 BLACK · 하의 DENIM</span></div>
+          <div class="pop"><div class="popbox">
+            <div class="pi">!</div>
+            <h5>지금 <em>클럽에서 입을 그 옷</em>으로<br>찍어주세요</h5>
+            <p>상대는 얼굴이 아니라 <b style="color:var(--paper)">이 옷</b>으로 당신을 찾습니다.</p>
+            <div class="warn">겉옷을 벗거나 옷을 갈아입으면 아무도 알아볼 수 없습니다.<br>바뀌었다면 다시 찍어 주세요.</div>
+            <span class="pb">이 옷으로 입장합니다</span>
+          </div></div>
         </div>
         <div class="chips" style="margin-top:10px">
           <span class="chip on">MAIN FLOOR · 비콘 자동</span>
@@ -429,19 +452,29 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
       </div>
     </div></div></div>
     <ol class="co">
-      <li><span class="num">01</span><div><h4>얼굴이 아니라 룩이 ID — 블러는 <u>가려질 때까지</u> 강해진다</h4>
+      <li><span class="num">01</span><div><h4>촬영 전 팝업 — "지금 <u>클럽에서 입을 그 옷</u>으로"</h4>
+        <p>이 앱 전체가 딛고 선 <b>단 하나의 전제</b>입니다. 상대가 나를 알아보는 단서는 오직 옷인데, <b>옷이 바뀌면 그 단서가 통째로 사라집니다.</b> 겉옷을 벗는 것만으로도 다른 사람이 됩니다.<br>
+        그래서 카메라를 열기 전에 팝업이 먼저 뜨고, 사용자는 <u>"이 옷으로 입장합니다"</u>를 눌러야 촬영이 시작됩니다. 이건 안내가 아니라 <b>확인 절차</b>입니다.<br>
+        추가 안전장치: 입장 후 옷이 바뀌었다면 룩을 다시 찍을 수 있고(하룻밤 1회 교체), 교체하면 이미 보낸 스파크의 카드도 함께 갱신됩니다.</p>
+        <span class="tech">CONFIRM BEFORE CAMERA · RE-SHOOT 1× PER NIGHT · UPDATES SENT CARDS</span></div></li>
+      <li><span class="num">02</span><div><h4>얼굴이 아니라 룩이 ID — 블러는 <u>가려질 때까지</u> 강해진다</h4>
         <p>어두운 실내에서 사람이 기억하는 건 얼굴이 아니라 <b>실루엣과 색</b>입니다. 얼굴 블러는 기본 ON.<br>
         ⚠️ 실측에서 드러난 것: <b>가우시안 블러 한 번으로는 부족합니다.</b> 흐리게 만든 13장 중 <u>10장에서 검출기가 얼굴을 다시 찾아냈습니다</u> — 사람 눈에 뿌옇게 보여도 구조가 남아 있으면 가려진 게 아닙니다.<br>
         그래서 기능을 '한 번 흐리기'가 아니라 <b>재검출로 확인하며 단계를 올리는 루프</b>로 만들었습니다: ① 블러 → ② 블러＋모자이크 → ③ 거친 모자이크 → ④ 단색. 각 단계마다 다시 검출해 안 잡힐 때까지 올리고, 마지막 단계는 반드시 통과합니다.<br>
         <b>실측 결과: 13장 전부 통과</b>(1단계 5장 · 2단계 8장). 검출 자체가 실패하면 상단 22%를 통째로 가리는 폴백이 받습니다 — 전신 크롭에서 머리는 반드시 위쪽에 있으니까요.</p>
         <span class="tech">YuNet DNN · ESCALATE UNTIL UNDETECTED · 13/13 PASS · FALLBACK TOP 22%</span></div></li>
-      <li><span class="num">02</span><div><h4>색을 <u>두 개</u> 뽑는다 — 3,000명이 만든 변경</h4>
+      <li><span class="num">03</span><div><h4>사람의 비율은 <u>절대</u> 바뀌지 않는다</h4>
+        <p>카드 크기에 맞춘다고 사진을 늘리면 안 됩니다. 실측에서 <b>가로가 최대 231%까지 퍼져</b> 같은 사람이 두 배 넓어 보였습니다 — 몸이 왜곡되면 이 앱에서 사람을 찾는 유일한 단서가 망가집니다.<br>
+        규칙: <b>전체가 들어가는 배율로만 축소하고, 남는 자리는 여백으로 채웁니다.</b> 여백은 같은 사진을 크롭·블러해 어둡게 깔아 카드가 깨져 보이지 않게 합니다(배경도 크롭이라 늘어나지 않습니다).<br>
+        <b>실측: 비율 오차 0.12%</b> — 반올림 수준입니다. 앱 카메라로 3:4로 찍어도 이 규칙은 그대로 지켜집니다.</p>
+        <span class="tech">CONTAIN FIT · NEVER STRETCH · AR ERROR ≤0.12% (이전 방식 최대 131% 왜곡)</span></div></li>
+      <li><span class="num">04</span><div><h4>색을 <u>두 개</u> 뽑는다 — 3,000명이 만든 변경</h4>
         <p>구 스펙도 상·하의 색을 뽑았지만 <b>검색은 한 색으로만</b> 했습니다. 만석에서 검정 상의는 432명입니다. 하의 색까지 검색 키로 쓰면 173명 — 이 한 가지가 대형 클럽에서 앱이 작동하냐 마냐를 가릅니다.</p>
         <span class="tech">K-MEANS × 2 · TOP + BOTTOM · 12 BUCKETS EACH</span></div></li>
-      <li><span class="num">03</span><div><h4>존은 시스템이 채운다</h4>
+      <li><span class="num">05</span><div><h4>존은 시스템이 채운다</h4>
         <p>BLE 비콘이 지금 구역을 자동 태깅합니다. 미터 측위가 아니라 <b>구역 단위</b>라 오차에 강하고, 이 값이 그리드의 <u>1차 필터로 자동 적용</u>됩니다 — 존 맵 화면이 사라진 이유입니다.</p>
         <span class="tech">BLE BEACON × 6 ZONES · RSSI 근접도 동시 수집</span></div></li>
-      <li><span class="num">04</span><div><h4>소멸을 먼저 약속한다</h4>
+      <li><span class="num">06</span><div><h4>소멸을 먼저 약속한다</h4>
         <p>등록 화면에서 삭제 시각을 못 박습니다. 이 한 줄이 사진 등록 허들을 크게 낮춥니다. 남지 않는다는 확신이 있어야 오늘 밤의 나를 올립니다.</p>
         <span class="tech">TTL 05:00 KST · HARD DELETE</span></div></li>
     </ol>
@@ -501,7 +534,7 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
         <span class="tech">SORT: seenMinsAgo ASC → RSSI DESC</span></div></li>
       <li><span class="num">04</span><div><h4>한 장씩 넘기지 않는다 — 3,000명이 만든 두 번째 변경</h4>
         <p>39명을 카드 덱으로 보면 39번 스와이프입니다. <b>3열 그리드는 한 화면에 12명</b>, 세 번 스크롤이면 끝납니다. 찾는 행위에는 그리드가, 결정하는 행위에는 큰 카드가 맞습니다 — 그래서 <u>탭하면 그 자리에서 크게 열립니다.</u></p>
-        <span class="tech">3-COL GRID · MAX 40 · NO INFINITE SCROLL</span><br><span class="tech" style="margin-top:4px">샘플 = 실제 룩 사진에 **우리 얼굴 블러 기능을 돌린 결과** (13/13 검증 통과)</span></div></li>
+        <span class="tech">3-COL GRID · MAX 40 · NO INFINITE SCROLL</span><br><span class="tech" style="margin-top:4px">샘플 = 실제 룩 사진에 우리 기능을 돌린 결과 — 비율 보존(오차 0.12%) + 얼굴 가림 13/13 검증 통과</span></div></li>
       <li><span class="num">05</span><div><h4>홀드 하나가 보내기·수락·플레어 전부</h4>
         <p>그리드 칸을 1.2초 꾹 = 스파크(화면 전환 없음). 받은 카드를 꾹 = 수락. 내 카드를 꾹 = 플레어. <b>대상만 다르고 동작은 같습니다.</b> 중간에 떼면 링이 되감기며 아무 일도 없어, 취한 손가락이 3발을 흘릴 방법이 없습니다.</p>
         <span class="tech">HOLD_MS 1200 · RELEASE = REWIND 400ms</span></div></li>
