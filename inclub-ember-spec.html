@@ -280,6 +280,25 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
 .rfacing{position:absolute;left:50%;top:16px;transform:translateX(-50%);width:0;height:0;
   border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:8px solid rgba(53,232,255,.7)}
 
+
+/* 찾아가기 — 룩은 크게 위, 레이더는 크게 아래 */
+.bigfind{display:flex;gap:9px;align-items:flex-end;margin:2px 0 8px;flex-shrink:0}
+.biglook{width:118px;height:157px;border-radius:11px;overflow:hidden;flex-shrink:0;
+  background-size:cover;background-position:center top;
+  box-shadow:0 0 0 2px var(--spark),0 0 20px rgba(255,122,26,.55)}
+.bigmeta{min-width:0;padding-bottom:4px}
+.bigmeta b{display:block;font-size:12px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.bigmeta .cc{display:flex;gap:4px;margin-bottom:6px}
+.bigmeta .cc i{width:15px;height:15px;border-radius:50%;box-shadow:inset 0 0 0 1.2px rgba(255,255,255,.45)}
+.bigmeta span{display:block;font-family:var(--mono);font-size:7.5px;letter-spacing:.08em;color:var(--dim2);line-height:1.7}
+.radar.big{flex:1;min-height:0}
+.rwrap.big{width:238px;height:238px}
+.rdot{position:absolute;transform:translate(-50%,-50%);width:15px;height:15px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff,#ff7a1a 65%);
+  box-shadow:0 0 14px rgba(255,122,26,1),0 0 30px rgba(255,122,26,.6);animation:rface 1.6s ease-in-out infinite}
+.rdot em{position:absolute;left:50%;top:-15px;transform:translateX(-50%);font-family:var(--mono);
+  font-size:8px;color:#ffd9a0;letter-spacing:.06em;font-style:normal;white-space:nowrap}
+
 /* 촬영 전 확인 팝업 */
 .pop{position:absolute;inset:0;z-index:9;display:flex;align-items:center;justify-content:center;
   background:rgba(4,3,8,.82);backdrop-filter:blur(3px);padding:16px}
@@ -576,21 +595,27 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
     <div class="devwrap"><div class="dev"><div class="scr">
       <div class="bar"><b>23:58</b><span>5G ▮▮▮</span></div>
       <div class="pad">
-        <div class="findtop">
-          <span class="finfo" style="min-width:0"><b>이 사람을 찾는 중</b><span>MAIN FLOOR · 3분 전 목격 · BLACK × DENIM</span></span>
+        <div class="bigfind">
+          <span class="biglook" style="background-image:url(looks/look-02.jpg)"></span>
+          <span class="bigmeta">
+            <b>이 사람을 찾는 중</b>
+            <span class="cc"><i style="background:#111"></i><i style="background:#2B4C8C"></i></span>
+            <span>BLACK × DENIM</span>
+            <span>MAIN FLOOR · 3분 전 목격</span>
+          </span>
         </div>
-        <div class="radar">
-          <div class="rwrap">
+        <div class="radar big">
+          <div class="rwrap big">
             <span class="rnorth">내가 보는 쪽</span>
             <span class="rfacing"></span>
             <span class="rbeam" style="background:conic-gradient(from 2deg,rgba(255,122,26,.22) 0 60deg,transparent 60deg)"></span>
             <span class="rsweep"></span>
-            <span class="rring" style="width:206px;height:206px"></span>
-            <span class="rring hot" style="width:128px;height:128px"></span>
-            <span class="rring" style="width:56px;height:56px"></span>
-            <span class="rarrow" style="height:64px;transform:translateX(-50%) rotate(148deg)"></span>
+            <span class="rring" style="width:228px;height:228px"></span>
+            <span class="rring hot" style="width:144px;height:144px"></span>
+            <span class="rring" style="width:64px;height:64px"></span>
+            <span class="rarrow" style="height:72px;transform:translateX(-50%) rotate(148deg)"></span>
             <span class="rme"></span>
-            <span class="rface" style="left:65.7%;top:24.9%;background-image:url(looks/look-02.jpg)"><b>8m</b></span>
+            <span class="rdot" style="left:66.0%;top:24.3%"><em>8m</em></span>
           </div>
           <div class="rlab"><b>약 8m</b> · 오른쪽 앞 · 가까워지는 중</div>
         </div>
@@ -601,10 +626,10 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
       </div>
     </div></div></div>
     <ol class="co">
-      <li><span class="num">01</span><div><h4>상대의 룩이 <u>곧 레이더의 점</u>이다</h4>
-        <p>화면 어딘가에 작게 붙여 두는 게 아니라, <b>찾는 사람의 룩 카드가 레이더 위 그 위치에 떠 있습니다.</b> 거리는 중심으로부터의 길이, 방향은 각도 — 그리고 그 자리에 <u>그 사람의 옷이 그대로 보입니다.</u> "저 옷 입은 사람이 저쪽 8m"가 한 장의 그림으로 읽힙니다.<br>
-        고개를 들어 대조할 대상이 화면에 있으니, 눈과 화면을 오갈 필요가 없습니다.</p>
-        <span class="tech">LOOK CARD = BLIP · DISTANCE=RADIUS · DIRECTION=ANGLE</span></div></li>
+      <li><span class="num">01</span><div><h4>위는 <u>룩 크게</u>, 아래는 <u>레이더 크게</u> — 딱 두 덩어리</h4>
+        <p>화면은 딱 두 덩어리입니다 — <b>위는 찾는 사람의 룩(크게), 아래는 레이더(크게).</b> 어두운 홀에서 실루엣과 옷 색을 대조하려면 사진이 충분히 커야 하고, 방향을 읽으려면 레이더도 충분히 커야 합니다. 둘 다 작게 넣으면 둘 다 못 씁니다.<br>
+        레이더 위의 점이 그 사람이고, <u>중심에서의 거리가 실제 거리(8m)</u>입니다. 위쪽 룩과 눈앞의 사람을 대조하면서 걸으면 됩니다.</p>
+        <span class="tech">LOOK LARGE ON TOP · RADAR LARGE BELOW · DISTANCE=RADIUS</span></div></li>
       <li><span class="num">02</span><div><h4>방향은 <u>나침반에 맞춰</u> 돈다 — 화면 위쪽이 내가 보는 쪽</h4>
         <p>지도가 북쪽 고정이면 "동쪽 12시 방향"을 머릿속에서 돌려야 합니다. EMBER는 <b>폰의 나침반에 맞춰 레이더가 회전</b>합니다 — 화면 위쪽이 항상 <u>내가 지금 바라보는 방향</u>입니다. 룩 카드가 오른쪽 위에 있으면 <b>고개를 오른쪽으로 돌리면 됩니다.</b> 생각할 필요가 없습니다.<br>
         방향 자체는 비콘 3개 이상의 삼각측량에서 나오고, 정확도는 60° 부채꼴이 상한입니다(아래 03).</p>
