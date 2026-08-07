@@ -201,6 +201,19 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
 .callout p{font-size:12.5px;line-height:1.75;color:var(--dim)}
 
 
+
+/* 존 체류 이력 다이어그램 */
+.trail{display:flex;align-items:stretch;gap:6px;margin:12px 0 4px;flex-wrap:wrap}
+.tstep{flex:1;min-width:120px;border:1px solid var(--line2);border-left:2px solid var(--dim2);
+  border-radius:0 8px 8px 0;padding:8px 10px;background:rgba(255,255,255,.02)}
+.tstep b{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--dim2);margin-bottom:3px}
+.tstep span{font-size:11.5px;color:var(--dim);line-height:1.5;display:block}
+.tstep.now{border-left-color:var(--spark);background:rgba(255,122,26,.07)}
+.tstep.now b{color:var(--spark)}
+.tstep.now em{font-style:normal;color:var(--paper);font-weight:700}
+.tarrow{align-self:center;color:var(--dim2);font-size:13px}
+@media(max-width:620px){.tarrow{display:none}.trail{flex-direction:column}}
+
 /* 3000명 대응 — 색 2줄 필터 + 3열 그리드 */
 .frow{display:flex;align-items:center;gap:4px;margin-bottom:5px;overflow:hidden}
 .flab{font-family:var(--mono);font-size:7px;letter-spacing:.12em;color:var(--dim2);width:20px;flex-shrink:0}
@@ -274,7 +287,7 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
     <div class="snum">00</div>
     <div class="stitle"><h2>3,000명에서 작동하는가</h2><span class="skicker">Scale · 주말 피크 기준 · 이 답이 설계를 정한다</span></div>
   </div>
-  <p class="slead">결론부터: <b>가능합니다. 단 조건이 있습니다.</b> 3,000명 만석에서 "아까 본 그 사람"을 찾으려면 좁히는 칼이 <u>넷은 있어야 하고</u>, 결과를 <u>한 장씩 넘겨서는 안 됩니다.</u> 아래는 실제 분포로 계산한 숫자입니다.</p>
+  <p class="slead">결론부터: <b>가능합니다. 단 조건이 셋 있습니다.</b> 좁히는 칼이 <u>넷은 있어야 하고</u>, 결과를 <u>한 장씩 넘겨서는 안 되며</u>, 위치는 <u>현재값이 아니라 이력으로</u> 남겨야 합니다. 아래는 실제 분포로 계산한 숫자이고, 이어지는 항목이 "사람이 계속 움직이는데 파악이 되나"에 대한 답입니다.</p>
   <div class="diff" style="margin-top:0">
     <table class="dtable">
       <thead><tr><th style="width:22%">단계</th><th style="width:15%">최악(메인플로어)</th><th style="width:15%">보통(바 A)</th><th>어떤 장치가 자르나</th></tr></thead>
@@ -295,16 +308,29 @@ h1 em{font-style:normal;color:var(--spark);text-shadow:0 0 34px rgba(255,122,26,
   </div>
   <div class="sbody" style="margin-top:8px">
     <ol class="co" style="grid-column:1/-1">
-      <li><span class="num">01</span><div><h4>서버는 3,000명을 견디는가 — 견딥니다</h4>
-        <p>폰이 30초에 한 번 자기 존만 보고합니다. 3,000명이면 초당 100건 — <b>일반적인 API 한 대가 여유롭게 받는 양</b>입니다. 좌표가 아니라 존 이름 하나라 페이로드도 수십 바이트입니다.</p>
-        <span class="tech">3000 ÷ 30s = 100 req/s · ZONE STRING ONLY</span></div></li>
-      <li><span class="num">02</span><div><h4>사진 3,000장을 내려받지 않는다</h4>
+      <li><span class="num">01</span><div><h4>30초 주기가 아니라 <u>움직일 때만</u> — 그게 더 빠르고 더 가볍다</h4>
+        <p>초안의 "30초에 한 번 보고"는 <b>틀린 설계였습니다.</b> 사람이 존을 옮겨도 최대 30초간 옛 자리로 보입니다. 대신 <b>존이 바뀌는 순간에만 보고</b>합니다 — iOS·안드로이드 모두 비콘 구역 진입/이탈을 <u>OS가 백그라운드에서 콜백</u>으로 알려줍니다(약 2~10초). 가만히 있으면 통신은 0건이고, 3,000명이 밤새 20번씩 옮겨도 <b>평균 초당 3.3건</b>입니다.</p>
+        <span class="tech">iBEACON REGION ENTER/EXIT · 2~10s · 3.3 req/s (폴링 대비 30배 ↓)</span></div></li>
+      <li><span class="num">02</span><div><h4>지금 어디 있나가 아니라, <u>내가 봤을 때 어디 있었나</u></h4>
+        <p>이게 진짜 답입니다. 사람이 계속 움직이니 <b>현재 위치만 저장하면 검색이 깨집니다</b> — 23:40에 바에서 본 사람이 23:45에 플로어로 갔다면, 23:47에 "바에서 봤어요"로 찾을 때 사라져 버립니다. 그래서 현재 존이 아니라 <b>존 체류 이력</b>을 남깁니다. 검색은 "지금 거기 있는 사람"이 아니라 <b>"그 시간에 거기 있었던 사람"</b>을 찾습니다.</p>
+        <div class="trail">
+          <div class="tstep"><b>23:40</b><span>BAR A 진입</span></div>
+          <div class="tarrow">→</div>
+          <div class="tstep"><b>23:45</b><span>MAIN FLOOR로 이동</span></div>
+          <div class="tarrow">→</div>
+          <div class="tstep now"><b>23:47</b><span>내가 검색 · <em>BAR A · 7분 전</em>으로 찾힘</span></div>
+        </div>
+        <span class="tech">ZONE TRAIL (zone, enteredAt, leftAt) · 1인당 밤새 ~20행</span></div></li>
+      <li><span class="num">03</span><div><h4>스파크는 진짜 실시간이다 — 그리고 이미 만들어져 있다</h4>
+        <p>위치는 몇 초 늦어도 되지만 <b>스파크 도착은 즉시여야 합니다.</b> 이건 폴링이 아니라 상시 연결(WebSocket)이고, 매치 도메인에 <b>게이트웨이 745줄 + 트랜스포트 590줄</b>이 presence·시퀀스 갭·백필·오프라인 큐·멱등 ack까지 완성된 채 있습니다. <u>화면에 연결만 안 돼 있을 뿐입니다.</u></p>
+        <span class="tech">SUPABASE REALTIME · gateway.ts · 미배선 자산</span></div></li>
+      <li><span class="num">04</span><div><h4>사진 3,000장을 내려받지 않는다</h4>
         <p>화면이 요청하는 건 <b>필터를 통과한 39장</b>뿐입니다. 썸네일 20KB 기준 800KB — 클럽 와이파이에서 1초입니다. 전체 목록은 서버가 갖고 클라이언트는 결과만 받습니다.</p>
         <span class="tech">SERVER-SIDE FILTER · PAGE 24 · THUMB 20KB</span></div></li>
-      <li><span class="num">03</span><div><h4>실시간은 이미 만들어 두었다</h4>
-        <p>매치 도메인의 realtime 게이트웨이(745줄)와 Supabase 트랜스포트(590줄)가 <b>presence·시퀀스 갭·백필·오프라인 큐·멱등 ack까지 구현된 채</b> 있습니다. 다만 아직 화면에 연결돼 있지 않습니다 — EMBER가 이걸 처음으로 쓰게 됩니다.</p>
-        <span class="tech">realtime/gateway.ts · supabase-transport.ts · 미배선</span></div></li>
-      <li><span class="num">04</span><div><h4>붐빌수록 오히려 정확해진다</h4>
+      <li><span class="num">05</span><div><h4>근접도는 앱을 열었을 때만 잰다</h4>
+        <p>존 진입/이탈은 백그라운드에서도 잡히지만, <b>15m 근접도(신호 세기)는 앱이 켜져 있을 때만</b> 정확히 측정됩니다. 상관없습니다 — <u>찾을 때 앱을 열기 때문</u>입니다. 열자마자 1~2초간 재고 그리드를 정렬합니다. 배터리를 밤새 태우지 않는 이유이기도 합니다.</p>
+        <span class="tech">RANGING ON FOREGROUND ONLY · 1~2s SETTLE</span></div></li>
+      <li><span class="num">06</span><div><h4>붐빌수록 오히려 정확해진다</h4>
         <p>사람이 많으면 후보도 늘지만, <b>같은 존에 오래 머무는 사람의 비율도 늘어납니다</b>. 근접·시간 필터의 신호 대 잡음비는 한산할 때보다 만석일 때 좋습니다. 위험한 건 인원이 아니라 <u>색 편중</u>이고, 그건 두 번째 색으로 해결했습니다.</p>
         <span class="tech">DENSITY HELPS RECENCY SIGNAL</span></div></li>
     </ol>
